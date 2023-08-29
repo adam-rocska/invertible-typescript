@@ -1,0 +1,50 @@
+{
+  "name": "@21gram-consulting/invertible",
+  "version": "0.0.0",
+  "description": "21Gram Consulting's library for invertible functions",
+  "keywords": [],
+  "main": "lib/invertible/index.js",
+  "types": "lib/invertible/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://21gramconsulting.github.io/invertible/",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/21GramConsulting/invertible.git"
+  },
+  "bugs": {
+    "url": "https://github.com/21GramConsulting/invertible/issues"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "tsc && tsc-alias",
+    "clean": "rm -rf lib docs coverage",
+    "doc": "typedoc",
+    "lint": "eslint invertible"
+  },
+  "author": {
+    "name": "Adam Laszlo Rocska",
+    "url": "https://github.com/adam-rocska"
+  },
+  "contributors": [
+    {
+      "name": "Ronald Legmann",
+      "url": "https://github.com/rlegmann"
+    },
+    {
+      "name": "Zsigmond Taroczy-Toth",
+      "url": "https://github.com/tzsiga"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

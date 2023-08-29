@@ -1,0 +1,8 @@
+**/.DS_Store
+*-debug.log
+*-error.log
+/lib
+/package-lock.json
+/tmp
+/yarn.lock
+node_modules

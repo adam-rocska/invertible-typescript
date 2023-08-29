@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitOverride": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "importHelpers": true,
+    "outDir": "lib",
+    "strict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "#*": [
+        "invertible/*"
+      ],
+      "!*": [
+        "./test/*"
+      ],
+      "@21gram-consulting/invertible": [
+        "invertible/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "invertible/**/*",
+    "./jest.config.ts"
+  ]
+}

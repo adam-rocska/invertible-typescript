@@ -1,5 +1,5 @@
-import {Proverse} from "#Proverse";
-import {Inverse} from "#Inverse";
+import {Proverse} from "./Proverse";
+import {Inverse} from "./Inverse";
 
 export type Invertible<
   Input = any,

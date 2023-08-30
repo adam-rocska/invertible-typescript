@@ -33,6 +33,7 @@ export const Invertible = <Input, Output = Input>(
   return proverseInvertible;
 }
 
+// TODO: [LOW] Get the test coverage to 100% branch coverage for this one. Not a big issue in TS world, but if a friggin webscripter starts hacking, it could explode.
 export type IsInvertible<
   Function extends Proverse
 > = Function extends Invertible<Function> ? true : false;

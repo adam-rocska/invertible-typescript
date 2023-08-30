@@ -4,5 +4,6 @@
 /lib
 /package-lock.json
 /tmp
+/var
 /yarn.lock
 node_modules

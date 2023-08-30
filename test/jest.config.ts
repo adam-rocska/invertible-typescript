@@ -7,7 +7,7 @@ const jestConfig: JestConfigWithTsJest = {
   testEnvironment: `node`,
   roots: ['<rootDir>'],
   modulePaths: [compilerOptions.baseUrl],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths)!,
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   setupFilesAfterEnv: ['<rootDir>/test/expect.ts'],
 }
 

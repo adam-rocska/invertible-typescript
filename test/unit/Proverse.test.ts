@@ -1,0 +1,13 @@
+import {Proverse} from "@21gram-consulting/invertible";
+
+describe('.Proverse', () => {
+  it('should return a totally new function value that acts like a proxy.', async () => {
+    const fn = jest.fn(async <Accumulator>(input: Object & Accumulator) => input);
+    const proverse = Proverse(fn);
+    expect(proverse).not.toBe(fn);
+    const input = {a: 1};
+    const result = await proverse(input);
+    expect(result).toBe(input);
+    expect(fn).toHaveBeenCalledWith(input);
+  });
+});

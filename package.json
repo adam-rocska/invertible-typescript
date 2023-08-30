@@ -21,11 +21,17 @@
     "url": "https://github.com/21GramConsulting/invertible/issues"
   },
   "scripts": {
-    "test": "jest",
     "build": "tsc && tsc-alias",
     "clean": "rm -rf lib docs coverage",
     "doc": "typedoc",
-    "lint": "eslint invertible"
+    "lint": "eslint invertible",
+    "test": "jest",
+    "test:unit": "npm run test -- --testPathPattern=test/unit",
+    "test:uat": "npm run test -- --testPathPattern=test/uat",
+    "test:unit:coverage": "npm run test:unit -- --coverage --coverageDirectory=var/unit-test-coverage --collectCoverageFrom=./invertible/**/*",
+    "test:uat:coverage": "npm run test:uat -- --coverage --coverageDirectory=var/uat-test-coverage --collectCoverageFrom=./invertible/**/*",
+    "serve:coverage:unit": "npx serve var/unit-test-coverage/lcov-report",
+    "serve:coverage:uat": "npx serve var/uat-test-coverage/lcov-report"
   },
   "author": {
     "name": "Adam Laszlo Rocska",

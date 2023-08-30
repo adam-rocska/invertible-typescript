@@ -1,0 +1,14 @@
+{
+  "jest.virtualFolders": [
+    {
+      "name": "Unit Tests",
+      "autoRun": "on-save",
+      "jestCommandLine": "npm run test:unit --",
+    },
+    {
+      "name": "User Acceptance Tests",
+      "autoRun": "off",
+      "jestCommandLine": "npm run test:uat --"
+    }
+  ]
+}

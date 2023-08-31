@@ -1,13 +1,13 @@
-import {Invertible} from "#main";
+// import {Invertible} from "#main";
 
-export default class InvertiblePromise<Input, Output> extends Promise<Output> {
+export default class InvertiblePromise<Output> extends Promise<Output> {
 
-  public constructor(execute: Invertible<Input, Output>) {
-    super(() => {});
-  }
+  // public constructor(execute: Invertible<Input, Output>) {
+  //   super(() => {});
+  // }
 
-  public invert(output: Output): InvertiblePromise<Output, Input> {
-    throw 123;
-  }
+  // public invert(output: Output): InvertiblePromise<Output, Input> {
+  //   throw 123;
+  // }
 
 }

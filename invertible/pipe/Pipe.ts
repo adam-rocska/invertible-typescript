@@ -1,7 +1,7 @@
 import {InputOf, Invertible, OutputOf, Proverse, isInvertible} from "#main";
 import {First, IsNonEmptyOf, Last, NonEmpty, tuple} from "#utility";
 import {Composition} from "./Composition";
-import {ConsecutiveTaskOf} from "./ConsecutiveTaskOF";
+import {ConsecutiveTaskOf} from "./ConsecutiveTaskOf";
 import {Pipeline} from "./Pipeline";
 import inverse from "./inverse";
 import proverse from "./proverse";

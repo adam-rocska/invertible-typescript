@@ -1,6 +1,6 @@
 import {Invertible, Proverse, isInvertible} from "@21gram-consulting/invertible";
 
-describe('.Invertible', () => {
+describe('Invertible', () => {
   it('should create an invertible function.', () => {
     const increment = Invertible<{value: number}>(
       async input => ({...input, value: input.value + 1}),
@@ -16,7 +16,7 @@ describe('.Invertible', () => {
   });
 });
 
-describe('.isInvertible', () => {
+describe('isInvertible', () => {
   it('should return true for an invertible function.', () => {
     const increment = Invertible<{value: number}>(
       async input => ({...input, value: input.value + 1}),

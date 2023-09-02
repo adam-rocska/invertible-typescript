@@ -1,6 +1,6 @@
 import {Inverse} from "@21gram-consulting/invertible";
 
-describe('.Inverse', () => {
+describe('Inverse', () => {
   it('should return a totally new function value that acts like a proxy.', async () => {
     const fn = jest.fn(async <Accumulator>(input: Object & Accumulator) => input);
     const inverse = Inverse(fn);

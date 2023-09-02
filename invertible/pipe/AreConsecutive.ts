@@ -1,7 +1,7 @@
 import {InputOf, OutputOf, Proverse} from "#main";
 import {NonEmptyOf} from "#utility";
 
-export type ArePiped<
+export type AreConsecutive<
   Tasks extends NonEmptyOf<Proverse>
 > = Tasks extends [infer _] ? true
   : Tasks extends [
@@ -12,5 +12,5 @@ export type ArePiped<
     infer From extends Proverse,
     infer To extends Proverse,
     ...infer Tail extends Proverse[]
-  ] ? OutputOf<From> extends InputOf<To> ? ArePiped<[To, ...Tail]> : false
-  : Tasks;
+  ] ? OutputOf<From> extends InputOf<To> ? AreConsecutive<[To, ...Tail]> : false
+  : true;

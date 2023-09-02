@@ -1,10 +1,12 @@
 import {InputOf, OutputOf, Proverse} from "#main";
-import {First, NonEmpty, NonEmptyOf, Tuple} from "#utility";
-import {ArePiped} from "./ArePiped";
-;
-type AsConsecutive<
+import {First, IsNonEmpty, NonEmpty, NonEmptyOf, Tuple} from "#utility";
+import {AreConsecutive} from "./AreConsecutive";
+
+export type Pipe<ToTasks extends Proverse[]> = <
   Tasks extends NonEmptyOf<Proverse>
-> = ArePiped<Tasks> extends true ? Tasks : never;
+>(
+  ...tasks: AreConsecutive<[...ToTasks, ...Tasks]> extends true ? Tasks : never
+) => Pipeline<[...Tasks, Task]>;
 
 function pipe<Tasks extends NonEmptyOf<Proverse>>(
   ...tasks: AsConsecutive<Tasks>
@@ -18,7 +20,7 @@ pipe(
   Proverse<string, number>(async input => input.length),
 );
 
-type debug1 = ArePiped<Tuple<[
+type debug1 = AreConsecutive<Tuple<[
   Proverse<string, number>,
   Proverse<number, string>,
 ]>>;

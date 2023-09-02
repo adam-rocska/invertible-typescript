@@ -1,27 +1,33 @@
 import {InputOf, Invertible, OutputOf, Proverse, isInvertible} from "#main";
-import {First, IsNonEmptyOf, Last, NonEmpty, tuple} from "#utility";
+import {First, IsNonEmptyOf, Last, NonEmpty, NonEmptyOf, Tuple, tuple} from "#utility";
+import {AreConsecutive} from "./AreConsecutive";
 import {Composition} from "./Composition";
-import {ConsecutiveTaskOf} from "./ConsecutiveTaskOf";
 import {Pipeline} from "./Pipeline";
 import inverse from "./inverse";
 import proverse from "./proverse";
 
-export type Pipe<Tasks extends Proverse[]> = <
-  Task extends ConsecutiveTaskOf<Tasks>
->(task: Task) => Pipeline<[...Tasks, Task]>;
+// TODO: investigate if we could utilize the native javascript #bind method instead of this poor man's currying.
+
+export type Pipe<ToTasks extends Proverse[]> = <
+  Tasks extends NonEmptyOf<Proverse>
+>(
+  ...tasks: AreConsecutive<[...ToTasks, ...Tasks]> extends true ? Tasks : never
+) => Pipeline<[...ToTasks, ...Tasks]>;
 
 export const compose = <
-  Tasks extends Proverse[]
+  ToTasks extends Proverse[]
 >(
-  tasks: Tasks
-): Pipe<Tasks> => <
-  Task extends ConsecutiveTaskOf<Tasks>
->(task: Task): Pipeline<[...Tasks, Task]> => {
-    type Pipeline = NonEmpty<[...Tasks, Task]>;
+  ...toTasks: ToTasks
+): Pipe<ToTasks> => <
+  Tasks extends NonEmptyOf<Proverse>
+>(
+  ...tasks: AreConsecutive<[...ToTasks, ...Tasks]> extends true ? Tasks : never
+): Pipeline<[...ToTasks, ...Tasks]> => {
+    type Pipeline = NonEmpty<[...ToTasks, ...Tasks]>;
     type Input = InputOf<First<Pipeline>>;
     type Output = OutputOf<Last<Pipeline>>;
 
-    const pipeline: Pipeline = tuple(...tasks, task);
+    const pipeline: Pipeline = tuple(...toTasks, ...tasks);
     let composition: Composition<Pipeline>;
 
     if (pipeline.every(isInvertible) && IsNonEmptyOf(pipeline)) {
@@ -34,9 +40,32 @@ export const compose = <
     }
 
     return Object.defineProperties(composition, {
-      pipe: {value: compose(pipeline)},
+      pipe: {value: compose(...pipeline)},
       call: {value: composition}
     });
   };
 
-export const pipe = compose<[]>([]);
+export const pipe = compose();
+
+pipe(
+  Proverse<string, number>(async input => input.length),
+  Proverse<number, string>(async input => input.toString()),
+  Proverse<string, number>(async input => input.length),
+).pipe(
+  Proverse<number, string>(async input => input.toString()),
+  Proverse<string, number>(async input => input.length),
+  Proverse<number, string>(async input => input.toString()),
+  pipe(
+    Proverse<string, number>(async input => input.length),
+  ),
+);
+
+type debug1 = AreConsecutive<Tuple<[
+  Proverse<string, number>,
+  Proverse<number, string>,
+]>>;
+type debug2 = NonEmpty<[
+  Proverse<string, number>,
+  Proverse<number, string>,
+]>;
+type debug3 = InputOf<First<debug2>>;

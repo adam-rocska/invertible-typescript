@@ -7,3 +7,4 @@
 /var
 /yarn.lock
 node_modules
+coverage

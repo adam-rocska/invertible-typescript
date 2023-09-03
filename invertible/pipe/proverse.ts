@@ -1,10 +1,11 @@
 import {InputOf, OutputOf, Proverse} from "#main";
 import {First, IsNonEmptyOf, Last, NonEmptyOf} from "#utility";
+import {AreConsecutive} from "./AreConsecutive";
 
 export default async function proverse<
   Tasks extends NonEmptyOf<Proverse>
 >(
-  tasks: Tasks,
+  tasks: AreConsecutive<Tasks> extends true ? Tasks : never,
   input: InputOf<First<Tasks>>
 ): Promise<OutputOf<Last<Tasks>>> {
   const [head, ...tail] = tasks;

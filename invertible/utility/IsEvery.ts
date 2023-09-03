@@ -11,7 +11,7 @@ export type IsEvery<
 export const IsEvery = <
   InList extends NonEmptyOf<Element>,
   OfType extends Element,
-  Element
+  Element = any
 >(
   inList: InList,
   isType: (element: Element) => element is OfType

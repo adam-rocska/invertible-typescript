@@ -1,19 +1,19 @@
-import {Invertible, pipe} from '@21gram-consulting/invertible';
+import {Invertible, Proverse, pipe} from '@21gram-consulting/invertible';
 
 describe('pipe', () => {
 
-  const add = (x: number) => async (y: number) => x + y;
-  const subtract = (x: number) => async (y: number) => x - y;
-  const multiply = (x: number) => async (y: number) => x * y;
-  const divide = (x: number) => async (y: number) => x / y;
+  const add = (x: number) => Proverse<number>(async (y) => x + y);
+  const subtract = (x: number) => Proverse<number>(async (y) => x - y);
+  const multiply = (x: number) => Proverse<number>(async (y) => x * y);
+  const divide = (x: number) => Proverse<number>(async (y) => x / y);
 
   const increment = Invertible<number, number>(add(1), subtract(1));
   const double = Invertible<number, number>(multiply(2), divide(2));
 
-  const toString = async (x: number) => x.toString();
-  const toUpperCase = async (x: string) => x.toUpperCase();
-  const toLowerCase = async (x: string) => x.toLowerCase();
-  const toNumber = async (x: string) => Number(x);
+  const toString = Proverse<number, string>(async (x) => x.toString());
+  const toUpperCase = Proverse<string, string>(async (x) => x.toUpperCase());
+  const toLowerCase = Proverse<string, string>(async (x) => x.toLowerCase());
+  const toNumber = Proverse<string, number>(async (x) => Number(x));
 
   describe('spread API', () => {
     it('should compose the expected function of the single task given.', async () => {

@@ -1,5 +1,5 @@
 import {InputOf, Invertible, OutputOf, Proverse, isInvertible} from "#main";
-import {First, IsNonEmptyOf, Last, NonEmpty, NonEmptyOf, Tuple} from "#utility";
+import {First, IsNonEmptyOf, Last, NonEmptyOf, Tuple} from "#utility";
 import {AreConsecutive} from "./AreConsecutive";
 import {Composition} from "./Composition";
 import {Pipeline} from "./Pipeline";
@@ -23,7 +23,7 @@ const compose = <
 >(
   ...tasks: AreConsecutive<[...ToTasks, ...Tasks]> extends true ? Tasks : never
 ): Pipeline<[...ToTasks, ...Tasks]> => {
-    type Pipeline = NonEmpty<[...ToTasks, ...Tasks]>;
+    type Pipeline = [...ToTasks, ...Tasks];
     type Input = InputOf<First<Pipeline>>;
     type Output = OutputOf<Last<Pipeline>>;
 

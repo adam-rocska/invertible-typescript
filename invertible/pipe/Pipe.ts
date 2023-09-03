@@ -6,8 +6,6 @@ import {Pipeline} from "./Pipeline";
 import inverse from "./inverse";
 import proverse from "./proverse";
 
-// TODO: investigate if we could utilize the native javascript #bind method instead of this poor man's currying.
-
 export type Pipe<ToTasks extends Proverse[]> = <
   Tasks extends NonEmptyOf<Proverse>
 >(
@@ -35,6 +33,7 @@ const compose = <
         input => proverse(pipeline, input),
         output => inverse(pipeline, output)
       );
+
     } else {
       composition = Proverse<Input, Output>(input => proverse(pipeline, input));
     }

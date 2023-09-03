@@ -34,4 +34,13 @@ describe('IsEvery', () => {
   it('should return true for a list of ten elements', () => {
     expect(IsEvery([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], isTestType)).toBe(true);
   });
+
+  it('should return false for a list of mixed elements', () => {
+    expect(IsEvery([1, '2', 3, '4', 5, 6, 7, 8, 9, 10], isTestType)).toBe(false);
+  });
+
+  it('should return false for a list of mixed elements', () => {
+    expect(IsEvery([1, '2', 3, '4', 5, 6, 7, 8, 9, 10], isTestType)).toBe(false);
+  });
+
 });

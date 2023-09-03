@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "tsc && tsc-alias",
-    "clean": "rm -rf lib docs coverage",
+    "clean": "rm -rf lib docs coverage var",
     "doc": "typedoc",
     "lint": "eslint invertible",
     "test": "jest",

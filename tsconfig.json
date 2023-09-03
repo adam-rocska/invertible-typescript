@@ -52,6 +52,14 @@
   },
   "include": [
     "invertible/**/*",
-    "jest.config.ts"
+    "jest.config.ts",
+    "test/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "coverage",
+    "tests",
+    "dist"
   ]
 }

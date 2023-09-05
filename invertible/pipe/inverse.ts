@@ -1,11 +1,11 @@
 import {InputOf, Invertible, OutputOf} from "#main";
 import {First, IsNonEmptyOf, Last, NonEmptyOf} from "#utility";
-import {AreConsecutive} from "./AreConsecutive";
+import {Consecutive} from "./Consecutive";
 
 export default async function inverse<
-  Tasks extends NonEmptyOf<Invertible>
+  Tasks extends Consecutive<NonEmptyOf<Invertible>>
 >(
-  tasks: AreConsecutive<Tasks> extends true ? Tasks : never,
+  tasks: Tasks,
   output: OutputOf<Last<Tasks>>
 ): Promise<InputOf<First<Tasks>>> {
   const [head, ...tail] = tasks;

@@ -3,24 +3,22 @@ import {NonEmptyOf} from "#utility";
 
 export type Consecutive<
   Tasks extends NonEmptyOf<Proverse>
-> = Tasks extends [infer SingleTask] ? [SingleTask]
+> = Tasks extends [
+  infer From extends Proverse,
+  infer To extends Proverse,
+  ...infer Tail extends Proverse[]
+] ? [
+    Proverse<InputOf<From>, OutputOf<From> & InputOf<To>>,
+    ...Consecutive<[
+      Proverse<OutputOf<From> & InputOf<To>, OutputOf<To>>,
+      ...Tail
+    ]>
+  ]
   : Tasks extends [
     infer From extends Proverse,
     infer To extends Proverse
-  ] ? OutputOf<From> extends InputOf<To> ? [From, To] : never
-  : Tasks extends [
-    infer From extends Proverse,
-    infer To extends Proverse,
-    ...infer Tail extends Proverse[]
-  ] ? OutputOf<From> extends InputOf<To> ? [From, ...Consecutive<[To, ...Tail]>] : never
-  : never;
-
-
-type Test = Consecutive<[
-  Proverse<string, number>,
-  Proverse<number, number>
-]>;
-const test: Test = [
-  async i => i.length,
-  async i => i + 1,
-];
+  ] ? [
+    Proverse<InputOf<From>, OutputOf<From> & InputOf<To>>,
+    Proverse<OutputOf<From> & InputOf<To>, OutputOf<To>>
+  ]
+  : Tasks;

@@ -1,3 +1,4 @@
+import {Proverse} from '#main';
 import proverse from '#pipe/proverse';
 
 describe('proverse', () => {
@@ -19,28 +20,25 @@ describe('proverse', () => {
   });
 
   it('should handle a pipeline with multiple types', async () => {
-    const task1 = async (input: number) => input + 1;
-    const toString = async (input: number) => input.toString();
-    const append = (expression: string) => async (to: string) => to + expression;
+    const task1 = Proverse<number, number>(async v => v + 1);
+    const toString = Proverse<number, string>(async v => v.toString());
+    const append = (expression: string) => Proverse<string, string>(async (to: string) => to + expression);
     const isInLimits = (
       minimum: number = Number.NEGATIVE_INFINITY,
       maximum: number = Number.POSITIVE_INFINITY
-    ) => async (
-      input: string
-    ) => input.length > minimum && input.length < maximum;
-    const task2 = async (input: string) => input.toUpperCase();
-    const task3 = async (input: boolean) => !input;
-    const pipeline = [
+    ) => Proverse<string, boolean>(async i => i.length > minimum && i.length < maximum);
+    const task2 = Proverse<string, string>(async i => i.toUpperCase());
+    const task3 = Proverse<boolean, boolean>(async input => !input);
+    const input = 0;
+    const expectedOutput = true;
+    const output = await proverse([
       task1,
       toString,
       append(' as a result.'),
       task2,
       isInLimits(0, 2),
       task3
-    ];
-    const input = 0;
-    const expectedOutput = true;
-    const output = await proverse(pipeline, input);
+    ], input);
     expect(output).toBe(expectedOutput);
   });
 

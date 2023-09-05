@@ -1,4 +1,4 @@
-import {Invertible, NonEmptyOf, Proverse, pipe} from '@21gram-consulting/invertible';
+import {Invertible, Proverse, pipe} from '@21gram-consulting/invertible';
 
 describe('pipe', () => {
 

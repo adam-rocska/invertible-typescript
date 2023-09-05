@@ -2,7 +2,6 @@ export type NonEmptyOf<Type> =
   | [Type]
   | [Type, ...Type[]]
   | [...Type[], Type]
-  | [...Type[]]
   | [Type, ...Type[], Type];
 
 export type NonEmpty<T extends NonEmptyOf<any>> = T;

@@ -6,14 +6,14 @@ import {Pipeline} from "./Pipeline";
 import inverse from "./inverse";
 import proverse from "./proverse";
 
-export type Pipe<ToTasks extends Proverse[]> = <
+export type Pipe<ToTasks extends ReadonlyArray<Proverse>> = <
   Tasks extends NonEmptyOf<Proverse>
 >(
-  ...tasks: AreConsecutive<[...ToTasks, ...Tasks]> extends true ? Tasks : never
+  ...tasks: AreConsecutive<[...Tasks]> extends true ? Tasks : never
 ) => Pipeline<[...ToTasks, ...Tasks]>;
 
 const compose = <
-  ToTasks extends Proverse[]
+  ToTasks extends ReadonlyArray<Proverse>
 >(
   ...toTasks: ToTasks
 ): Pipe<ToTasks> => <

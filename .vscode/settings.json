@@ -10,5 +10,9 @@
       "autoRun": "off",
       "jestCommandLine": "npm run test:uat --"
     }
+  ],
+  "cSpell.words": [
+    "fasz",
+    "Seggfej"
   ]
 }

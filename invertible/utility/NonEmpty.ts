@@ -1,13 +1,15 @@
-export type NonEmptyOf<Type> =
-  | [Type]
-  | [Type, ...Type[]]
-  | [...Type[], Type]
-  | [Type, ...Type[], Type];
+export type NonEmptyOf<Type = any> = Array<Type> & {readonly 0: Type;};
 
-export type NonEmpty<T extends NonEmptyOf<any>> = T;
-export const NonEmpty = <T extends NonEmptyOf<any>>(...t: T): NonEmpty<T> => t;
+export type NonEmpty<Tuple extends NonEmptyOf<any>> = Tuple;
+export const NonEmpty = <
+  Tuple extends Array<any>
+>(
+  ...tuple: Tuple
+): Tuple => tuple;
 
 export const NonEmptyOf = <T>(...t: NonEmptyOf<T>): NonEmptyOf<T> => t;
+export const IsNonEmptyOf = <T>(candidate: Array<T>): candidate is NonEmptyOf<T> => candidate.length > 0;
 
-export type IsNonEmpty<T extends any[]> = T extends [] ? false : true;
-export const IsNonEmptyOf = <T>(candidate: T[]): candidate is NonEmptyOf<T> => candidate.length > 0;
+export type IsNonEmpty<T extends Array<any>> = T extends []
+  ? false
+  : true;

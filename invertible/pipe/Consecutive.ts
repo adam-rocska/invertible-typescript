@@ -22,3 +22,13 @@ export type Consecutive<
     Proverse<OutputOf<From> & InputOf<To>, OutputOf<To>>
   ]
   : Tasks;
+
+export const Consecutive = <
+  Tasks extends Consecutive<NonEmptyOf<Proverse>>
+>(
+  ...tasks: Tasks
+): Tasks => tasks;
+
+export type AreConsecutive<
+  Tasks extends NonEmptyOf<Proverse>
+> = Tasks extends Consecutive<Tasks> ? true : false;

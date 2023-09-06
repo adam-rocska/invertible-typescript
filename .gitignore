@@ -1,10 +1,6 @@
 **/.DS_Store
-*-debug.log
-*-error.log
 /lib
-/package-lock.json
 /tmp
 /var
-/yarn.lock
 node_modules
 coverage

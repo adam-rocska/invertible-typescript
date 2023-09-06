@@ -3,9 +3,9 @@ import {Invertible, Proverse, pipe} from '@21gram-consulting/invertible';
 describe('pipe', () => {
 
   const add = (x: number) => Proverse<number>(async (y) => x + y);
-  const subtract = (x: number) => Proverse<number>(async (y) => x - y);
+  const subtract = (x: number) => Proverse<number>(async (y) => y - x);
   const multiply = (x: number) => Proverse<number>(async (y) => x * y);
-  const divide = (x: number) => Proverse<number>(async (y) => x / y);
+  const divide = (x: number) => Proverse<number>(async (y) => y / x);
 
   const increment = Invertible<number, number>(add(1), subtract(1));
   const double = Invertible<number, number>(multiply(2), divide(2));
@@ -37,9 +37,9 @@ describe('pipe', () => {
 
     it('should compose a function when pipes are nested.', async () => {
       const pipeline = pipe(pipe(increment, double), pipe(double, increment));
-      expect(await pipeline.call(1)).toBe(6);
-      expect(await pipeline(1)).toBe(6);
-      expect(await pipeline.inverse(6)).toBe(1);
+      expect(await pipeline.call(1)).toBe(9);
+      expect(await pipeline(1)).toBe(9);
+      expect(await pipeline.inverse(9)).toBe(1);
     });
   });
 
@@ -72,9 +72,9 @@ describe('pipe', () => {
           pipe(double)
             .pipe(increment)
         );
-      expect(await pipeline.call(1)).toBe(6);
-      expect(await pipeline(1)).toBe(6);
-      expect(await pipeline.inverse(6)).toBe(1);
+      expect(await pipeline.call(1)).toBe(9);
+      expect(await pipeline(1)).toBe(9);
+      expect(await pipeline.inverse(9)).toBe(1);
     });
   });
 
@@ -100,12 +100,12 @@ describe('pipe', () => {
         ),
         Invertible(
           async (x: string) => x.length,
-          async (x: number) => Array(x).fill("x").map((_, i) => i).join("")
+          async (x: number) => Array(x).fill("x").map((_, i) => i + 1).join("")
         )
       );
       expect(await pipeline.call(123)).toBe(3);
       expect(await pipeline(123)).toBe(3);
-      expect(await pipeline.inverse(3)).toBe("321");
+      expect(await pipeline.inverse(3)).toBe(321);
     });
 
   });

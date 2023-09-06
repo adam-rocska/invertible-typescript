@@ -10,13 +10,5 @@
       "autoRun": "off",
       "jestCommandLine": "npm run test:uat --"
     }
-  ],
-  "cSpell.words": [
-    "Bazmeg",
-    "bijective",
-    "fasz",
-    "Invertibility",
-    "Seggem",
-    "Seggfej"
   ]
 }

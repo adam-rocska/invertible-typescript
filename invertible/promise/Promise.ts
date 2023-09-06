@@ -14,11 +14,10 @@ export default
   }
 
   public override then<
-    PrimaryTask extends ConsecutiveTaskOf<Tasks>,
-    RecoveryTask extends Inverse<PrimaryTask>
+    PrimaryTask extends ConsecutiveTaskOf<Tasks>
   >(
-    onFulfilled: PrimaryTask,
-    onRejected: never
+    onFulfilled?: PrimaryTask | null,
+    onRejected?: Inverse<PrimaryTask> | null
   ): Promise<Consecutive<[...Tasks, PrimaryTask]>> {
     throw new Error("Method not implemented.");
   }

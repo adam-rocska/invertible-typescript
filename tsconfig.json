@@ -59,5 +59,19 @@
     "coverage",
     "tests",
     "dist"
-  ]
+  ],
+  "typedocOptions": {
+    "name": "Invertible Functions & Pipelines",
+    "includeVersion": true,
+    "entryPoints": "./invertible/index.ts",
+    "entryPointStrategy": "Expand",
+    "out": "var/docs",
+    "disableSources": true,
+    "readme": "./invertible/SUMMARY.md",
+    "searchInComments": true,
+    "navigationLinks": {
+      "21Gram Consulting": "https://www.21gram.consulting",
+      "GitHub": "https://github.com/21GramConsulting/invertible",
+    }
+  }
 }

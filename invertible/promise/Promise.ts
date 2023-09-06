@@ -1,23 +1,38 @@
-import {Inverse, OutputOf} from "#main";
+import {Inverse, OutputOf, Proverse} from "#main";
 import {Consecutive} from "#pipe";
 import {ConsecutiveTaskOf} from "#pipe/ConsecutiveTaskOf";
 import {Inverted, Last} from "#utility";
+import {Init} from "#utility/Init";
 import NativePromise from "./NativePromise";
 
 export default
   class Promise<Tasks extends Consecutive>
   extends NativePromise<OutputOf<Last<Tasks>>> {
 
-  public invert(): Promise<Inverted<Tasks>> {
-    throw new Error("Method not implemented.");
+  private readonly task: Last<Tasks>;
+  private readonly previous: Init<Tasks> extends Consecutive
+    ? Promise<Init<Tasks>>
+    : null;
+
+  public constructor(
+    task: Last<Tasks>,
+    previous: Init<Tasks> extends Consecutive
+      ? Promise<Init<Tasks>>
+      : null
+  ) {
+    super();
+
+    this.task = task;
+    this.previous = previous;
   }
 
   public override then<
-    PrimaryTask extends ConsecutiveTaskOf<Tasks>
+    Task extends ConsecutiveTaskOf<Tasks>
   >(
-    onFulfilled?: PrimaryTask | null,
-    onRejected?: Inverse<PrimaryTask> | null
-  ): Promise<Consecutive<[...Tasks, PrimaryTask]>> {
+    onFulfilled?: Task | null,
+    onRejected?: Proverse<any, OutputOf<Task>> | null
+  ): Promise<Consecutive<[...Tasks, Task]>> {
     throw new Error("Method not implemented.");
   }
+
 }

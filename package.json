@@ -1,8 +1,22 @@
 {
   "name": "@21gram-consulting/invertible",
-  "version": "0.0.0",
-  "description": "21Gram Consulting's library for invertible functions",
-  "keywords": [],
+  "version": "1.0.0",
+  "description": "21Gram Consulting's library for invertible functions and pipelines. It enables you to implement bijective pure functions and organize invertible, proverse or inverse functions into statically typed strict type-safe pipelines.",
+  "keywords": [
+    "invertible",
+    "pipeline",
+    "bijective",
+    "pure",
+    "functional",
+    "functional programming",
+    "functional programming library",
+    "inverse",
+    "proverse",
+    "typescript",
+    "strict",
+    "type-safe",
+    "type safety"
+  ],
   "main": "lib/invertible/index.js",
   "types": "lib/invertible/index.d.ts",
   "files": [

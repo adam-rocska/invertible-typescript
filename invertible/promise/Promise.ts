@@ -6,8 +6,7 @@ import NativePromise from "./NativePromise";
 
 export default
   class Promise<Tasks extends Consecutive>
-  extends NativePromise<OutputOf<Last<Tasks>>>
-{
+  extends NativePromise<OutputOf<Last<Tasks>>> {
 
   public invert(): Promise<Inverted<Tasks>> {
     throw new Error("Method not implemented.");

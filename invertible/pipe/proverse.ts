@@ -1,9 +1,9 @@
-import {InputOf, OutputOf, Proverse} from "#main";
-import {First, IsNonEmptyOf, Last, NonEmptyOf} from "#utility";
+import {InputOf, OutputOf} from "#main";
+import {First, IsNonEmptyOf, Last} from "#utility";
 import {Consecutive} from "./Consecutive";
 
 export default async function proverse<
-  Tasks extends Consecutive<NonEmptyOf<Proverse>>
+  Tasks extends Consecutive
 >(
   tasks: Tasks,
   input: InputOf<First<Tasks>>

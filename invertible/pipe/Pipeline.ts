@@ -1,10 +1,9 @@
-import {Proverse} from "#main";
-import {NonEmptyOf} from "#utility";
 import {Composition} from "./Composition";
+import {Consecutive} from "./Consecutive";
 import {Pipe} from "./Pipe";
 
 export type Pipeline<
-  Tasks extends NonEmptyOf<Proverse>
+  Tasks extends Consecutive
 > = Composition<Tasks> & {
   pipe: Pipe<Tasks>,
   call: Composition<Tasks>

@@ -63,9 +63,5 @@
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=9.0.0"
-  },
-  "dependencies": {
-    "ts-toolbelt": "^9.6.0",
-    "type-fest": "^4.3.1"
   }
 }

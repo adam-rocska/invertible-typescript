@@ -6,50 +6,30 @@ import {Pipeline} from "./Pipeline";
 import inverse from "./inverse";
 import proverse from "./proverse";
 
-
-// a working construct:
-//
-// ToTasks extends NonEmpty<infer ToTasks>
-//   ? Consecutive<[...ToTasks, ...NonEmptyOf<Proverse>]>
-//   : Consecutive<NonEmptyOf<Proverse>>
-
-
-export type Pipe<
-  ToTasks extends
+type PreliminaryTasks =
   | Consecutive<NonEmptyOf<Proverse>>
-  | []
-> = <
-  Tasks extends Consecutive<NonEmptyOf<Proverse>>
+  | [];
+
+export type Pipe<To extends PreliminaryTasks = []> = <
+  Tasks extends Consecutive
 >(
-  ...tasks: AreConsecutive<[
-    ...ToTasks,
-    ...Tasks
-  ]> extends true
+  ...tasks: AreConsecutive<[...To, ...Tasks]> extends true
     ? Tasks
     : never
-) => Pipeline<[...ToTasks, ...Tasks]>;
+) => Pipeline<[...To, ...Tasks]>;
 
-const compose = <
-  ToTasks extends
-  | Consecutive<NonEmptyOf<Proverse>>
-  | []
->(
-  ...toTasks: ToTasks
-): Pipe<ToTasks> => <
-  Tasks extends Consecutive<NonEmptyOf<Proverse>>
->(
-  ...tasks: AreConsecutive<[
-    ...ToTasks,
-    ...Tasks
-  ]> extends true
+const compose = <To extends PreliminaryTasks = []>(
+  ...to: To
+): Pipe<To> => <Tasks extends Consecutive>(
+  ...tasks: AreConsecutive<[...To, ...Tasks]> extends true
     ? Tasks
     : never
-): Pipeline<[...ToTasks, ...Tasks]> => {
-    type Pipeline = [...ToTasks, ...Tasks];
+): Pipeline<[...To, ...Tasks]> => {
+    type Pipeline = [...To, ...Tasks];
     type Input = InputOf<First<Pipeline>>;
     type Output = OutputOf<Last<Pipeline>>;
 
-    const pipeline: Pipeline = Tuple(...toTasks, ...tasks);
+    const pipeline: Pipeline = Tuple(...to, ...tasks);
     let composition: Composition<Pipeline>;
 
     if (pipeline.every(isInvertible) && IsNonEmptyOf(pipeline)) {

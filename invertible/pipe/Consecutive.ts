@@ -2,7 +2,7 @@ import {InputOf, OutputOf, Proverse} from "#main";
 import {NonEmptyOf} from "#utility";
 
 export type Consecutive<
-  Tasks extends NonEmptyOf<Proverse>
+  Tasks extends NonEmptyOf<Proverse> = NonEmptyOf<Proverse>
 > = Tasks extends [
   infer From extends Proverse,
   infer To extends Proverse,
@@ -24,7 +24,7 @@ export type Consecutive<
   : Tasks;
 
 export const Consecutive = <
-  Tasks extends Consecutive<NonEmptyOf<Proverse>>
+  Tasks extends Consecutive = Consecutive
 >(
   ...tasks: Tasks
 ): Tasks => tasks;

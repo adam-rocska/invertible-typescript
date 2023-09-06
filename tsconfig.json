@@ -51,9 +51,7 @@
     }
   },
   "include": [
-    "invertible/**/*",
-    "jest.config.ts",
-    "test/**/*"
+    "invertible/**/*"
   ],
   "exclude": [
     "node_modules",

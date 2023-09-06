@@ -8,13 +8,4 @@ export type Promise<Tasks extends Consecutive> =
   ? {invert(value: OutputOf<Last<Tasks>>): Promise<Inverted<Tasks>>}
   : {}
   // MARK: Common stuff
-  & {
-
-  };
-
-export type PromiseConstructor =
-  new <T>(
-    executor: (
-      resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void
-    ) => void
-  ) => PromiseLike<T>;;
+  & {};

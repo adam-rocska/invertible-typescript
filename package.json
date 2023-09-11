@@ -1,6 +1,6 @@
 {
   "name": "@21gram-consulting/invertible",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "21Gram Consulting's library for invertible functions and pipelines. It enables you to implement invertible pure functions and organize invertible, proverse or inverse functions into statically typed strict type-safe pipelines.",
   "keywords": [
     "invertible",

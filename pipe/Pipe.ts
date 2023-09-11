@@ -1,9 +1,15 @@
-import {InputOf, Invertible, OutputOf, Proverse, isInvertible} from "#main";
-import {First, IsNonEmptyOf, Last, NonEmptyOf, Tuple} from "#utility";
-import {Composition} from "./Composition";
-import {AreConsecutive, Consecutive} from "./Consecutive";
-import {Pipeline} from "./Pipeline";
-import inverse from "./inverse";
+import {
+  type InputOf,
+  type OutputOf,
+  Invertible,
+  Proverse,
+  isInvertible
+} from "@21gram-consulting/invertible";
+import {First, IsNonEmptyOf, Last, NonEmptyOf, Tuple} from "@21gram-consulting/invertible/utility";
+import type {Composition} from "./Composition";
+import type {AreConsecutive, Consecutive} from "./Consecutive";
+import type {Pipeline} from "./Pipeline";
+import inverse from "./inverse"
 import proverse from "./proverse";
 
 type PreliminaryTasks =

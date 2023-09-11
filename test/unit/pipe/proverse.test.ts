@@ -1,5 +1,6 @@
-import {Proverse} from '#main';
-import proverse from '#pipe/proverse';
+import {Proverse} from '@21gram-consulting/invertible';
+// It's by design private but we gotta test it.
+import proverse from '../../../pipe/proverse';
 
 describe('proverse', () => {
   it('should return the output of the task if alone.', async () => {

@@ -1,7 +1,7 @@
-import {NonEmpty, NonEmptyOf, IsNonEmptyOf, Tuple} from "@21gram-consulting/invertible";
+import {NonEmpty, NonEmptyOf, IsNonEmptyOf, Tuple} from "@21gram-consulting/invertible/utility";
 
 describe('.NonEmpty', () => {
-  it('returns a non-empőty tuple', () => {
+  it('returns a non-empty tuple', () => {
     expect(NonEmpty('a', 'b', 'c')).toEqual(Tuple('a', 'b', 'c'));
   });
 });

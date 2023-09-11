@@ -1,4 +1,5 @@
 import {Inverse} from "@21gram-consulting/invertible";
+import {jest} from "@jest/globals";
 
 describe('Inverse', () => {
   it('should return a totally new function value that acts like a proxy.', async () => {

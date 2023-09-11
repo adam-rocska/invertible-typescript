@@ -1,4 +1,4 @@
-import inverse from '#pipe/inverse';
+import inverse from '../../../pipe/inverse';
 import {Invertible} from '@21gram-consulting/invertible';
 
 describe('inverse', () => {

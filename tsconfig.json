@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "resolveJsonModule": true,
+    "resolvePackageJsonExports": true,
+    "resolvePackageJsonImports": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
     "noImplicitAny": true,
@@ -29,45 +31,44 @@
     "removeComments": true,
     "useUnknownInCatchVariables": true,
     "exactOptionalPropertyTypes": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
     "sourceMap": true,
-    "target": "ES2021",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "useDefineForClassFields": true,
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "target": "ESNext",
     "lib": [
-      "ES2021"
+      "ESNext"
     ],
-    "rootDir": ".",
-    "baseUrl": "./",
-    "paths": {
-      "#*": [
-        "invertible/*"
-      ],
-      "@21gram-consulting/invertible#test/*": [
-        "test/*"
-      ],
-      "@21gram-consulting/invertible": [
-        "invertible/index.ts"
-      ]
-    }
+    "rootDir": "."
   },
   "include": [
-    "invertible/**/*"
+    "invertible",
+    "global.d.ts",
+    "pipe",
+    "promise",
+    "utility"
   ],
   "exclude": [
     "node_modules",
     "lib",
     "coverage",
-    "tests",
     "dist"
   ],
   "typedocOptions": {
     "name": "Invertible Functions & Pipelines",
     "includeVersion": true,
-    "entryPoints": "./invertible/index.ts",
+    "entryPoints": [
+      "./invertible/index.ts",
+      "./pipe/index.ts",
+      "./utility/index.ts",
+      "./promise/index.ts"
+    ],
     "entryPointStrategy": "Expand",
     "out": "var/docs",
     "disableSources": true,
-    "readme": "./invertible/SUMMARY.md",
+    "readme": "./README.md",
     "searchInComments": true,
     "navigationLinks": {
       "21Gram Consulting": "https://www.21gram.consulting",

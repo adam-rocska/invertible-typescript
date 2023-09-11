@@ -1,4 +1,4 @@
-import {IsEvery} from '@21gram-consulting/invertible';
+import {IsEvery} from '@21gram-consulting/invertible/utility';
 
 describe('IsEvery', () => {
   type TestType = number;

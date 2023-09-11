@@ -1,6 +1,6 @@
 
-import {OutputOf, Proverse} from "#main";
-import {Last} from "#utility";
+import type {OutputOf, Proverse} from "@21gram-consulting/invertible";
+import {Last} from "@21gram-consulting/invertible/utility";
 import {Consecutive} from "./Consecutive";
 
 export type ConsecutiveTaskOf<

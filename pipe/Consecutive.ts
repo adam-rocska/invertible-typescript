@@ -1,5 +1,5 @@
-import {InputOf, OutputOf, Proverse} from "#main";
-import {NonEmptyOf} from "#utility";
+import type {InputOf, OutputOf, Proverse} from "@21gram-consulting/invertible";
+import {NonEmptyOf} from "@21gram-consulting/invertible/utility";
 
 export type Consecutive<
   Tasks extends NonEmptyOf<Proverse> = NonEmptyOf<Proverse>

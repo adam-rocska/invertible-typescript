@@ -1,7 +1,7 @@
 import {Proverse} from "./Proverse";
 import {Inverse} from "./Inverse";
-import {OutputOf} from "./OutputOf";
-import {InputOf} from "./InputOf";
+import type {OutputOf} from "./OutputOf";
+import * as InputOf from "./InputOf";
 
 export type Invertible<
   Input = any,
@@ -38,7 +38,7 @@ export const Invertible = <Input, Output = Input>(
 // TODO: [LOW] Get the test coverage to 100% branch coverage for this one. Not a big issue in TS world, but if a friggin webscripter starts hacking, it could explode.
 export type IsInvertible<
   Function extends Proverse
-> = Function extends Invertible<InputOf<Function>, OutputOf<Function>> ? true : false;
+> = Function extends Invertible<InputOf.InputOf<Function>, OutputOf<Function>> ? true : false;
 export const isInvertible = <
   Input = any,
   Output = Input

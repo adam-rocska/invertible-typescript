@@ -1,4 +1,4 @@
-import {Coalesce} from '@21gram-consulting/invertible';
+import {Coalesce} from '@21gram-consulting/invertible/utility';
 
 describe('Coalesce', () => {
   it('should return undefined with no parameters provided.', () => {

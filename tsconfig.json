@@ -47,7 +47,6 @@
     "invertible",
     "global.d.ts",
     "pipe",
-    "promise",
     "utility"
   ],
   "exclude": [
@@ -62,8 +61,7 @@
     "entryPoints": [
       "./invertible/index.ts",
       "./pipe/index.ts",
-      "./utility/index.ts",
-      "./promise/index.ts"
+      "./utility/index.ts"
     ],
     "entryPointStrategy": "Expand",
     "out": "var/docs",

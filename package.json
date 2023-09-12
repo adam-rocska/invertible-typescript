@@ -19,20 +19,16 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./lib/invertible/index.js",
-      "types": "./lib/invertible/index.d.ts"
+      "types": "./lib/invertible/index.d.ts",
+      "import": "./lib/invertible/index.js"
     },
     "./pipe": {
-      "import": "./lib/pipe/index.js",
-      "types": "./lib/pipe/index.d.ts"
-    },
-    "./promise": {
-      "import": "./lib/promise/index.js",
-      "types": "./lib/promise/index.d.ts"
+      "types": "./lib/pipe/index.d.ts",
+      "import": "./lib/pipe/index.js"
     },
     "./utility": {
-      "import": "./lib/utility/index.js",
-      "types": "./lib/utility/index.d.ts"
+      "types": "./lib/utility/index.d.ts",
+      "import": "./lib/utility/index.js"
     }
   },
   "files": [

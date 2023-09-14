@@ -1,6 +1,8 @@
 **/.DS_Store
-/lib
-/tmp
-/var
+lib
+include/*
+!include/global.d.ts
+tmp
+var
 node_modules
 coverage

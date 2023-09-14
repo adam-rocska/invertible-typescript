@@ -45,8 +45,8 @@
     "declarationDir": "include"
   },
   "include": [
+    "include/global.d.ts",
     "invertible",
-    "global.d.ts",
     "pipe",
     "utility"
   ],

@@ -35,13 +35,13 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "useDefineForClassFields": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
     "module": "ESNext",
     "target": "ESNext",
     "lib": [
       "ESNext"
     ],
-    "rootDir": "."
+    "rootDir": ".",
   },
   "include": [
     "invertible",

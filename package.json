@@ -54,7 +54,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf lib coverage var",
+    "clean": "rimraf lib coverage var include",
     "attw": "attw --pack",
     "doc": "typedoc",
     "lint": "eslint .",

@@ -42,6 +42,7 @@
       "ESNext"
     ],
     "rootDir": ".",
+    "declarationDir": "include"
   },
   "include": [
     "invertible",

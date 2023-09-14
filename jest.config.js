@@ -22,19 +22,11 @@ if (process.env.TEST_AGAINST_ARTIFACTS) {
 
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 export default {
-  preset: `ts-jest`,
   testEnvironment: `node`,
   roots: [`<rootDir>`],
   setupFilesAfterEnv: [`<rootDir>/test/expect.ts`],
-  transformIgnorePatterns: [],
   transform: {
-    '^.+\\.[tj]sx?$': [
-      'ts-jest',
-      {
-        useESM: true
-      },
-    ],
+    "^.+\\.(t|j)sx?$": "@swc/jest",
   },
-  extensionsToTreatAsEsm: [`.ts`],
   moduleNameMapper
 };

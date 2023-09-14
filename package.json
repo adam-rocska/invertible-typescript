@@ -95,9 +95,7 @@
     "typedoc": "^0.25.1",
     "typedoc-plugin-coverage": "^2.2.0",
     "typedoc-plugin-mdn-links": "^3.1.0",
-    "typescript": "^5.2.2",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=18.0.0",

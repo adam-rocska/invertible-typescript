@@ -28,26 +28,33 @@
     "useUnknownInCatchVariables": true,
     "exactOptionalPropertyTypes": true,
     "sourceMap": true,
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
     "useDefineForClassFields": true,
     "module": "NodeNext",
-    "moduleResolution": "nodenext",
-    "target": "ESNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2018",
     "lib": [
-      "ESNext"
+      "ES2018"
     ],
     "baseUrl": ".",
-    "rootDir": ".",
+    "rootDir": "./",
     "outDir": "lib",
-    "declarationDir": "include"
+    "declarationDir": "include",
+    "paths": {
+      "@21gram-consulting/invertible": [
+        "./invertible/src/index.ts"
+      ],
+      "@21gram-consulting/invertible/pipe": [
+        "./pipe/src/index.ts"
+      ],
+      "@21gram-consulting/invertible/utility": [
+        "./utility/src/index.ts"
+      ]
+    },
   },
   "include": [
     "include/global.d.ts"
   ],
   "exclude": [
-    "node_modules",
-    "lib",
     "coverage",
     "dist"
   ],
@@ -68,5 +75,10 @@
       "21Gram Consulting": "https://www.21gram.consulting",
       "GitHub": "https://github.com/21GramConsulting/invertible"
     }
+  },
+  "watchOptions": {
+    "fallbackPolling": "dynamicPriority",
+    "watchDirectory": "useFsEvents",
+    "watchFile": "useFsEvents"
   }
 }

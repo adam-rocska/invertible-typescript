@@ -16,6 +16,7 @@
     "type-safe",
     "type safety"
   ],
+  "packageManager": "pnpm@8.4.0",
   "main": "./invertible/lib/index.js",
   "module": "./invertible/lib/index.esm.js",
   "types": "./invertible/include/index.d.ts",
@@ -71,18 +72,23 @@
     "url": "https://github.com/21GramConsulting/invertible/issues"
   },
   "scripts": {
+    "prepare": "husky install",
+    "csb:install": "corepack enable && corepack pnpm i",
+    "csb:build": "pnpm build",
+    "watch": "pnpm -r run watch",
+    "types:check": "pnpm -r run types:check",
     "clean": "rimraf lib coverage var include/*/",
-    "build": "npm run build:package invertible && npm run build:package pipe && npm run build:package utility",
+    "build": "pnpm build:package invertible && pnpm build:package pipe && pnpm build:package utility",
     "build:package": "bunchee --cwd",
     "attw": "attw --pack",
-    "prepublishOnly": "npm clean && npm build",
+    "prepublishOnly": "pnpm clean && pnpm build",
     "doc": "typedoc",
     "lint": "eslint .",
     "test": "jest",
-    "test:unit": "npm run test -- --testPathPattern=test/unit",
-    "test:uat": "npm run test -- --testPathPattern=test/uat",
-    "test:unit:coverage": "npm run test:unit -- --coverage --coverageDirectory=var/unit-test-coverage --collectCoverageFrom=./invertible/**/*",
-    "test:uat:coverage": "npm run test:uat -- --coverage --coverageDirectory=var/uat-test-coverage --collectCoverageFrom=./invertible/**/*",
+    "test:unit": "pnpm test -- --testPathPattern=test/unit",
+    "test:uat": "pnpm test -- --testPathPattern=test/uat",
+    "test:unit:coverage": "pnpm test:unit -- --coverage --coverageDirectory=var/unit-test-coverage --collectCoverageFrom=./invertible/**/*",
+    "test:uat:coverage": "pnpm test:uat -- --coverage --coverageDirectory=var/uat-test-coverage --collectCoverageFrom=./invertible/**/*",
     "serve:coverage:unit": "npx serve var/unit-test-coverage/lcov-report",
     "serve:coverage:uat": "npx serve var/uat-test-coverage/lcov-report"
   },
@@ -112,6 +118,7 @@
     "bunchee": "^3.7.2",
     "eslint": "^8.48.0",
     "eslint-plugin-node": "^11.1.0",
+    "husky": "^8.0.3",
     "jest": "^29.7.0",
     "rimraf": "^5.0.1",
     "semver": "^7.5.4",
@@ -119,9 +126,5 @@
     "typedoc-plugin-coverage": "^2.2.0",
     "typedoc-plugin-mdn-links": "^3.1.0",
     "typescript": "^5.2.2"
-  },
-  "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
   }
 }

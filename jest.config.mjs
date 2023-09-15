@@ -10,6 +10,7 @@ if (process.env.TEST_AGAINST_ARTIFACTS) {
   moduleNameMapper = Object.fromEntries(
     Object
       .entries(packageJson.exports)
+      .filter(([name, entry]) => typeof entry.import === 'string')
       .map(([name, entry]) => [
         `^` + name.replace(/^./, `@21gram-consulting/invertible`) + `$`,
         entry

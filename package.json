@@ -16,7 +16,6 @@
     "type-safe",
     "type safety"
   ],
-  "type": "module",
   "main": "./invertible/lib/index.js",
   "module": "./invertible/lib/index.esm.js",
   "types": "./invertible/include/index.d.ts",

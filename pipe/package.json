@@ -14,5 +14,8 @@
     "build": "bunchee",
     "types:check": "tsc --noEmit",
     "clean": "rimraf lib include"
+  },
+  "peerDependencies": {
+    "@21gram-consulting/invertible": "*"
   }
 }

@@ -17,6 +17,7 @@
     "allowJs": false,
     "alwaysStrict": true,
     "declaration": true,
+    "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
@@ -31,11 +32,12 @@
     "verbatimModuleSyntax": true,
     "useDefineForClassFields": true,
     "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "nodenext",
     "target": "ESNext",
     "lib": [
       "ESNext"
     ],
+    "baseUrl": ".",
     "rootDir": ".",
     "outDir": "lib",
     "declarationDir": "include"

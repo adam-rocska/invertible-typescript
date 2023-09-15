@@ -1,6 +1,6 @@
 import {Proverse} from "./Proverse";
 import {Inverse} from "./Inverse";
-import type {OutputOf} from "./OutputOf";
+import {OutputOf} from "./OutputOf";
 import * as InputOf from "./InputOf";
 
 export type Invertible<

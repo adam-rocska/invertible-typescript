@@ -1,7 +1,5 @@
 **/.DS_Store
 lib
-include/*
-!include/global.d.ts
 tmp
 var
 node_modules

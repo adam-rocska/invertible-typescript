@@ -16,48 +16,32 @@
     "type-safe",
     "type safety"
   ],
-  "packageManager": "pnpm@8.4.0",
-  "main": "./invertible/lib/index.js",
-  "module": "./invertible/lib/index.esm.js",
-  "types": "./invertible/include/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "pipe": [
-        "./pipe/include/index.d.ts"
-      ],
-      "utility": [
-        "./utility/include/index.d.ts"
-      ]
-    }
-  },
+  "main": "./lib/invertible/index.js",
+  "module": "./lib/invertible/index.esm.js",
+  "types": "./include/invertible/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./invertible/include/index.d.ts",
-      "import": "./invertible/lib/index.mjs",
-      "module": "./invertible/lib/index.esm.js",
-      "require": "./invertible/lib/index.js"
+      "types": "./include/invertible/index.d.ts",
+      "import": "./lib/invertible/index.mjs",
+      "module": "./lib/invertible/index.esm.js",
+      "require": "./lib/invertible/index.js"
     },
     "./pipe": {
-      "types": "./pipe/include/index.d.ts",
-      "import": "./pipe/lib/index.mjs",
-      "module": "./pipe/lib/index.esm.js",
-      "require": "./pipe/lib/index.js"
+      "types": "./include/pipe/index.d.ts",
+      "import": "./lib/pipe/index.mjs",
+      "module": "./lib/pipe/index.esm.js",
+      "require": "./lib/pipe/index.js"
     },
     "./utility": {
-      "types": "./utility/include/index.d.ts",
-      "import": "./utility/lib/index.mjs",
-      "module": "./utility/lib/index.esm.js",
-      "require": "./utility/lib/index.js"
+      "types": "./include/utility/index.d.ts",
+      "import": "./lib/utility/index.mjs",
+      "module": "./lib/utility/index.esm.js",
+      "require": "./lib/utility/index.js"
     }
   },
   "files": [
-    "invertible/{lib,include}/**/*.{js,d.ts,mjs,d.mts}",
-    "invertible/package.json",
-    "pipe/{lib,include}/**/*.{js,d.ts,mjs,d.mts}",
-    "pipe/package.json",
-    "utility/{lib,include}/**/*.{js,d.ts,mjs,d.mts}",
-    "utility/package.json"
+    "{lib,include}/**/*.{js,d.ts,mjs,d.mts}"
   ],
   "homepage": "https://21gramconsulting.github.io/invertible/",
   "publishConfig": {
@@ -72,22 +56,17 @@
     "url": "https://github.com/21GramConsulting/invertible/issues"
   },
   "scripts": {
-    "csb:install": "corepack enable && corepack pnpm i",
-    "csb:build": "pnpm build",
-    "watch": "pnpm -r run watch",
-    "types:check": "pnpm -r run types:check",
-    "clean": "pnpm run -r clean && rimraf lib coverage var include/*/",
-    "build": "pnpm build:package invertible && pnpm build:package pipe && pnpm build:package utility",
-    "build:package": "bunchee --cwd",
+    "clean": "rimraf lib coverage var tmp include/*/",
+    "build": "bunchee",
     "attw": "attw --pack",
-    "prepublishOnly": "pnpm clean && pnpm build",
+    "prepublishOnly": "npm run clean && npm run build",
     "doc": "typedoc",
     "lint": "eslint .",
     "test": "jest",
-    "test:unit": "pnpm test -- --testPathPattern=test/unit",
-    "test:uat": "pnpm test -- --testPathPattern=test/uat",
-    "test:unit:coverage": "pnpm test:unit -- --coverage --coverageDirectory=var/unit-test-coverage --collectCoverageFrom=./invertible/**/*",
-    "test:uat:coverage": "pnpm test:uat -- --coverage --coverageDirectory=var/uat-test-coverage --collectCoverageFrom=./invertible/**/*",
+    "test:unit": "npm run test -- --testPathPattern=test/unit",
+    "test:uat": "npm run test -- --testPathPattern=test/uat",
+    "test:unit:coverage": "npm run test:unit -- --coverage --coverageDirectory=var/unit-test-coverage --collectCoverageFrom=./invertible/**/*",
+    "test:uat:coverage": "npm run test:uat -- --coverage --coverageDirectory=var/uat-test-coverage --collectCoverageFrom=./invertible/**/*",
     "serve:coverage:unit": "npx serve var/unit-test-coverage/lcov-report",
     "serve:coverage:uat": "npx serve var/uat-test-coverage/lcov-report"
   },
@@ -107,7 +86,6 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@21gram-consulting/invertible": "workspace:*",
     "@arethetypeswrong/cli": "^0.10.2",
     "@jest/globals": "^29.7.0",
     "@playwright/test": "^1.38.0",
@@ -115,7 +93,7 @@
     "@swc/jest": "^0.2.29",
     "@types/jest": "^29.5.4",
     "@types/node": "^20.6.1",
-    "bunchee": "^3.7.2",
+    "bunchee": "3.6.0",
     "eslint": "^8.49.0",
     "eslint-plugin-node": "^11.1.0",
     "jest": "^29.7.0",
@@ -124,6 +102,6 @@
     "typedoc": "^0.25.1",
     "typedoc-plugin-coverage": "^2.2.0",
     "typedoc-plugin-mdn-links": "^3.1.0",
-    "typescript": "^5.2.2"
+    "typescript": "5.1.3"
   }
 }

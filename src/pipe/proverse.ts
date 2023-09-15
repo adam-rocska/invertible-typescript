@@ -1,4 +1,4 @@
-import type {InputOf, OutputOf} from "@21gram-consulting/invertible";
+import {InputOf, OutputOf} from "@21gram-consulting/invertible";
 import {First, IsNonEmptyOf, Last} from "@21gram-consulting/invertible/utility";
 import {Consecutive} from "./Consecutive";
 

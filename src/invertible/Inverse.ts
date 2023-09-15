@@ -1,5 +1,5 @@
-import type {InputOf} from "./InputOf";
-import type {OutputOf} from "./OutputOf";
+import {InputOf} from "./InputOf";
+import {OutputOf} from "./OutputOf";
 import {Proverse} from "./Proverse";
 
 export type Inverse<Function extends Proverse> = Proverse<

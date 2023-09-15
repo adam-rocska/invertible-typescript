@@ -28,33 +28,39 @@
     "useUnknownInCatchVariables": true,
     "exactOptionalPropertyTypes": true,
     "sourceMap": true,
+    "isolatedModules": true,
     "useDefineForClassFields": true,
-    "module": "NodeNext",
+    "resolvePackageJsonExports": true,
+    "resolvePackageJsonImports": true,
     "moduleResolution": "NodeNext",
-    "target": "ES2018",
+    "module": "NodeNext",
+    "target": "ESNext",
     "lib": [
-      "ES2018"
+      "ESNext"
     ],
     "baseUrl": ".",
-    "rootDir": "./",
+    "rootDir": "src",
     "outDir": "lib",
     "declarationDir": "include",
     "paths": {
       "@21gram-consulting/invertible": [
-        "./invertible/src/index.ts"
-      ],
-      "@21gram-consulting/invertible/pipe": [
-        "./pipe/src/index.ts"
+        "src/invertible"
       ],
       "@21gram-consulting/invertible/utility": [
-        "./utility/src/index.ts"
+        "src/utility"
+      ],
+      "@21gram-consulting/invertible/pipe/*": [
+        "src/pipe/*"
       ]
     },
   },
   "include": [
-    "include/global.d.ts"
+    "include/global.d.ts",
+    "src"
   ],
   "exclude": [
+    "node_modules",
+    "lib",
     "coverage",
     "dist"
   ],
@@ -75,10 +81,5 @@
       "21Gram Consulting": "https://www.21gram.consulting",
       "GitHub": "https://github.com/21GramConsulting/invertible"
     }
-  },
-  "watchOptions": {
-    "fallbackPolling": "dynamicPriority",
-    "watchDirectory": "useFsEvents",
-    "watchFile": "useFsEvents"
   }
 }

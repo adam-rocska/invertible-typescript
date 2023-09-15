@@ -1,6 +1,6 @@
-import type {Composition} from "./Composition";
+import {Composition} from "./Composition";
 import {Consecutive} from "./Consecutive";
-import type {Pipe} from "./Pipe";
+import {Pipe} from "./Pipe";
 
 export type Pipeline<
   Tasks extends Consecutive

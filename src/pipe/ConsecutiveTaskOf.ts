@@ -1,5 +1,5 @@
 
-import type {OutputOf, Proverse} from "@21gram-consulting/invertible";
+import {OutputOf, Proverse} from "@21gram-consulting/invertible";
 import {Last} from "@21gram-consulting/invertible/utility";
 import {Consecutive} from "./Consecutive";
 

@@ -52,7 +52,7 @@
       "@21gram-consulting/invertible/pipe/*": [
         "src/pipe/*"
       ]
-    },
+    }
   },
   "include": [
     "include/global.d.ts",

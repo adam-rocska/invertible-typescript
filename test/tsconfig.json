@@ -1,5 +1,18 @@
 {
   "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "#invertible/*": [
+        "src/invertible/*"
+      ],
+      "#utility/*": [
+        "src/utility/*"
+      ],
+      "#pipe/*": [
+        "src/pipe/*"
+      ]
+    }
+  },
   "include": [
     "./**/*.ts",
     "./**/*.tsx"

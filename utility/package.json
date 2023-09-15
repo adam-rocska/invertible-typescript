@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "main": "./lib/index.js",
+  "module": "./lib/index.esm.js",
+  "types": "./include/index.d.ts",
+  "exports": {
+    "types": "./include/index.d.ts",
+    "import": "./lib/index.mjs",
+    "module": "./lib/index.esm.js",
+    "require": "./lib/index.js"
+  },
+  "scripts": {
+    "watch": "bunchee -w",
+    "build": "bunchee",
+    "types:check": "tsc --noEmit",
+    "clean": "rimraf lib include"
+  }
+}

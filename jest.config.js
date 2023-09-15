@@ -23,7 +23,6 @@ if (process.env.TEST_AGAINST_ARTIFACTS) {
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 export default {
   testEnvironment: `node`,
-  roots: [`<rootDir>`],
   setupFilesAfterEnv: [`<rootDir>/test/expect.ts`],
   transform: {
     "^.+\\.(t|j)sx?$": "@swc/jest",

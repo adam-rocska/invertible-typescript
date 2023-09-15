@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
     "resolveJsonModule": true,
-    "resolvePackageJsonExports": true,
-    "resolvePackageJsonImports": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
     "noImplicitAny": true,
@@ -18,10 +16,7 @@
     "allowUnusedLabels": false,
     "allowJs": false,
     "alwaysStrict": true,
-    "esModuleInterop": true,
     "declaration": true,
-    "importHelpers": true,
-    "outDir": "lib",
     "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
@@ -35,20 +30,18 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "useDefineForClassFields": true,
-    "moduleResolution": "Bundler",
-    "module": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "target": "ESNext",
     "lib": [
       "ESNext"
     ],
     "rootDir": ".",
+    "outDir": "lib",
     "declarationDir": "include"
   },
   "include": [
-    "include/global.d.ts",
-    "invertible",
-    "pipe",
-    "utility"
+    "include/global.d.ts"
   ],
   "exclude": [
     "node_modules",

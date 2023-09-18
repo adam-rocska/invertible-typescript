@@ -3,18 +3,17 @@
   "compilerOptions": {
     "paths": {
       "#invertible/*": [
-        "src/invertible/*"
+        "invertible/src/*"
       ],
       "#utility/*": [
-        "src/utility/*"
+        "utility/src/*"
       ],
       "#pipe/*": [
-        "src/pipe/*"
+        "pipe/src/*"
       ]
     }
   },
   "include": [
-    "./**/*.ts",
-    "./**/*.tsx"
+    "./**/*.ts"
   ]
 }

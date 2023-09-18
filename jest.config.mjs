@@ -1,24 +1,17 @@
 import {execSync} from "child_process";
 import packageJson from "./package.json" assert {type: "json"};
+import tsConfigJson from './tsconfig.json' assert {type: "json"};
+import {pathsToModuleNameMapper} from "ts-jest";
 
 let moduleNameMapper;
+let modulePathIgnorePatterns;
 
 if (process.env.TEST_AGAINST_ARTIFACTS) {
-  execSync(`npm run clean`);
-  execSync(`npm run build`);
+  execSync(`pnpm clean`);
+  execSync(`pnpm build`);
 } else {
-  // Yes, I know there is ts-jest and its brilliant pathsToModuleNameMapper, but package.json based assures more
   moduleNameMapper = Object.fromEntries(
-    Object
-      .entries(packageJson.exports)
-      .filter(([name, entry]) => typeof entry.import === 'string')
-      .map(([name, entry]) => [
-        `^` + name.replace(/^./, `@21gram-consulting/invertible`) + `$`,
-        entry
-          .import
-          .replace(/^.\/lib\//, `<rootDir>/src/`)
-          .replace(/\.[mc]{0,1}js$/, `.ts`)
-      ])
+    Object.entries(pathsToModuleNameMapper(tsConfigJson.compilerOptions.paths))
       .map(([from, to]) => [
         [from, to],
         [
@@ -27,8 +20,12 @@ if (process.env.TEST_AGAINST_ARTIFACTS) {
         ]
       ])
       .reduce((a,b) => a.concat(b))
+      .map(([from, to]) => [from, `<rootDir>/${to}`])
       .sort()
-  )
+  );
+  modulePathIgnorePatterns = [
+    "dist"
+  ];
 }
 
 export default {
@@ -37,5 +34,8 @@ export default {
   transform: {
     "^.+\\.(t|j)sx?$": "@swc/jest",
   },
-  moduleNameMapper
+  coveragePathIgnorePatterns: ['/node_modules/', '/dist/', '/test/'],
+  coverageReporters: ['text', 'html'],
+  moduleNameMapper,
+  modulePathIgnorePatterns,
 };

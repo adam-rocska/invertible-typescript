@@ -36,16 +36,18 @@
     "lib": [
       "ESNext"
     ],
+    "outDir": "dist",
+    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
       "@21gram-consulting/invertible": [
-        "invertible/src"
+        "invertible/src/index.ts"
       ],
       "@21gram-consulting/invertible/utility": [
-        "utility/src"
+        "utility/src/index.ts"
       ],
       "@21gram-consulting/invertible/pipe": [
-        "pipe/src"
+        "pipe/src/index.ts"
       ]
     }
   },

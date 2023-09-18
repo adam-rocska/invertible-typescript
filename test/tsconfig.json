@@ -2,6 +2,15 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "paths": {
+      "@21gram-consulting/invertible": [
+        "invertible/src/index.ts"
+      ],
+      "@21gram-consulting/invertible/utility": [
+        "utility/src/index.ts"
+      ],
+      "@21gram-consulting/invertible/pipe": [
+        "pipe/src/index.ts"
+      ],
       "#invertible/*": [
         "invertible/src/*"
       ],

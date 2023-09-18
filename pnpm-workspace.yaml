@@ -1,5 +1,5 @@
 packages:
+  - "utility"
   - "invertible"
   - "pipe"
   - "promise"
-  - "utility"

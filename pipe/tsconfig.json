@@ -1,12 +1,10 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "../lib/pipe",
-    "declarationDir": "../include/pipe"
+    "outDir": "./dist"
   },
   "include": [
-    "../include/global.d.ts",
+    "../global.d.ts",
     "src"
   ]
 }

@@ -39,13 +39,13 @@
     "baseUrl": ".",
     "paths": {
       "@21gram-consulting/invertible": [
-        "invertible"
+        "invertible/src"
       ],
       "@21gram-consulting/invertible/utility": [
-        "src/utility"
+        "utility/src"
       ],
-      "@21gram-consulting/invertible/pipe/*": [
-        "src/pipe/*"
+      "@21gram-consulting/invertible/pipe": [
+        "pipe/src"
       ]
     }
   },

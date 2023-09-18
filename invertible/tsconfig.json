@@ -1,12 +1,10 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "../lib/invertible",
-    "declarationDir": "../include/invertible"
+    "outDir": "./dist"
   },
   "include": [
-    "../include/global.d.ts",
-    "src"
+    "../global.d.ts",
+    "./src"
   ]
 }

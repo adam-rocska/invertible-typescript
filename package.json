@@ -17,37 +17,44 @@
     "type safety"
   ],
   "packageManager": "pnpm@8.7.5",
-  "types": "./include/invertible/index.d.ts",
-  "import": "./lib/invertible/index.mjs",
-  "module": "./lib/invertible/index.esm.js",
-  "source": "./src/invertible/index.ts",
-  "main": "./lib/invertible/index.js",
+  "main": "./invertible/dist/index.js",
+  "module": "./invertible/dist/index.esm.js",
+  "types": "./invertible/dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "utility": [
+        "./utility/dist/index.d.ts"
+      ],
+      "pipe": [
+        "./pipe/dist/index.d.ts"
+      ]
+    }
+  },
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./include/invertible/index.d.ts",
-      "import": "./lib/invertible/index.mjs",
-      "module": "./lib/invertible/index.esm.js",
-      "require": "./lib/invertible/index.js",
-      "source": "./src/invertible/index.ts"
+      "import": "./invertible/dist/index.mjs",
+      "module": "./invertible/dist/index.esm.js",
+      "require": "./invertible/dist/index.js"
     },
-    "./pipe": {
-      "types": "./include/pipe/index.d.ts",
-      "import": "./lib/pipe/index.mjs",
-      "module": "./lib/pipe/index.esm.js",
-      "require": "./lib/pipe/index.js",
-      "source": "./src/pipe/index.ts"
+    "./infinite": {
+      "import": "./pipe/dist/index.mjs",
+      "module": "./pipe/dist/index.esm.js",
+      "require": "./pipe/dist/index.js"
     },
-    "./utility": {
-      "types": "./include/utility/index.d.ts",
-      "import": "./lib/utility/index.mjs",
-      "module": "./lib/utility/index.esm.js",
-      "require": "./lib/utility/index.js",
-      "source": "./src/utility/index.ts"
+    "./immutable": {
+      "import": "./utility/dist/index.mjs",
+      "module": "./utility/dist/index.esm.js",
+      "require": "./utility/dist/index.js"
     }
   },
   "files": [
-    "{lib,include}/**/*.{js,d.ts,mjs,d.mts}"
+    "invertible/dist/**/*.{js,d.ts,mjs,d.mts}",
+    "pipe/dist/**/*.{js,d.ts,mjs,d.mts}",
+    "utility/dist/**/*.{js,d.ts,mjs,d.mts}",
+    "invertible/package.json",
+    "pipe/package.json",
+    "utility/package.json"
   ],
   "homepage": "https://21gramconsulting.github.io/invertible/",
   "publishConfig": {

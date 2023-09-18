@@ -1,11 +1,11 @@
 {
-  "main": "./lib/index.js",
-  "module": "./lib/index.esm.js",
-  "types": "./include/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    "import": "./lib/index.mjs",
-    "module": "./lib/index.esm.js",
-    "require": "./lib/index.js"
+    "import": "./dist/index.mjs",
+    "module": "./dist/index.esm.js",
+    "require": "./dist/index.js"
   },
   "private": true,
   "scripts": {

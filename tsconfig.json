@@ -30,8 +30,6 @@
     "sourceMap": true,
     "isolatedModules": true,
     "useDefineForClassFields": true,
-    "resolvePackageJsonExports": true,
-    "resolvePackageJsonImports": true,
     "moduleResolution": "NodeNext",
     "module": "NodeNext",
     "target": "ESNext",
@@ -55,8 +53,7 @@
     }
   },
   "include": [
-    "include/global.d.ts",
-    "src"
+    "include/global.d.ts"
   ],
   "exclude": [
     "node_modules",

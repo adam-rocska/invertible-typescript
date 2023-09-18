@@ -1,20 +1,16 @@
 {
-  "private": true,
-  "types": "../include/utility/index.d.ts",
-  "import": "../lib/utility/index.mjs",
-  "main": "../lib/utility/index.js",
-  "module": "../lib/utility/index.esm.js",
-  "source": "./src/index.ts",
+  "main": "./lib/index.js",
+  "module": "./lib/index.esm.js",
+  "types": "./include/index.d.ts",
   "exports": {
-    "types": "./../include/utility/index.d.ts",
-    "import": "./../lib/utility/index.mjs",
-    "module": "./../lib/utility/index.esm.js",
-    "require": "./../lib/utility/index.js",
-    "source": "./src/index.ts"
+    "import": "./lib/index.mjs",
+    "module": "./lib/index.esm.js",
+    "require": "./lib/index.js"
   },
+  "private": true,
   "scripts": {
-    "watch": "microbundle -w",
-    "build": "microbundle",
+    "watch": "bunchee -w",
+    "build": "bunchee",
     "types:check": "tsc --noEmit",
     "clean": "rimraf lib include"
   }

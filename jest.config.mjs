@@ -6,10 +6,8 @@ import {pathsToModuleNameMapper} from "ts-jest";
 let moduleNameMapper;
 let modulePathIgnorePatterns;
 
-if (process.env.TEST_AGAINST_ARTIFACTS) {
+if (!process.env.TEST_AGAINST_ARTIFACTS) {
   execSync(`pnpm clean`);
-  execSync(`pnpm build`);
-} else {
   moduleNameMapper = Object.fromEntries(
     Object.entries(pathsToModuleNameMapper(tsConfigJson.compilerOptions.paths))
       .map(([from, to]) => [

@@ -61,9 +61,9 @@
     "name": "Invertible Functions & Pipelines",
     "includeVersion": true,
     "entryPoints": [
-      "./invertible/index.ts",
-      "./pipe/index.ts",
-      "./utility/index.ts"
+      "./invertible/src/index.ts",
+      "./pipe/src/index.ts",
+      "./utility/src/index.ts"
     ],
     "entryPointStrategy": "Expand",
     "out": "var/docs",

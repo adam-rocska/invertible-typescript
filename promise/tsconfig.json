@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "../lib/promise",
+    "declarationDir": "../include/promise"
+  },
+  "include": [
+    "../include/global.d.ts",
+    "src"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@21gram-consulting/invertible",
+  "private": true,
+  "types": "../include/invertible/index.d.ts",
+  "import": "../lib/invertible/index.mjs",
+  "main": "../lib/invertible/index.js",
+  "module": "../lib/invertible/index.esm.js",
+  "source": "./src/index.ts",
+  "exports": {
+    "types": "./../include/invertible/index.d.ts",
+    "import": "./../lib/invertible/index.mjs",
+    "module": "./../lib/invertible/index.esm.js",
+    "require": "./../lib/invertible/index.js",
+    "source": "./src/index.ts"
+  },
+  "scripts": {
+    "watch": "microbundle -w",
+    "build": "microbundle",
+    "types:check": "tsc --noEmit",
+    "clean": "rimraf lib include"
+  },
+  "peerDependencies": {
+    "@21gram-consulting/invertible/utility": "*"
+  }
+}

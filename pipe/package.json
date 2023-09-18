@@ -1,0 +1,26 @@
+{
+  "name": "@21gram-consulting/invertible/pipe",
+  "private": true,
+  "types": "../include/pipe/index.d.ts",
+  "import": "../lib/pipe/index.mjs",
+  "main": "../lib/pipe/index.js",
+  "module": "../lib/pipe/index.esm.js",
+  "source": "./src/index.ts",
+  "exports": {
+    "types": "./../include/pipe/index.d.ts",
+    "import": "./../lib/pipe/index.mjs",
+    "module": "./../lib/pipe/index.esm.js",
+    "require": "./../lib/pipe/index.js",
+    "source": "./src/index.ts"
+  },
+  "scripts": {
+    "watch": "microbundle -w",
+    "build": "microbundle",
+    "types:check": "tsc --noEmit",
+    "clean": "rimraf lib include"
+  },
+  "peerDependencies": {
+    "@21gram-consulting/invertible": "*",
+    "@21gram-consulting/invertible/utility": "*"
+  }
+}

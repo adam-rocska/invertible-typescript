@@ -1,0 +1,27 @@
+{
+  "name": "@21gram-consulting/invertible/promise",
+  "private": true,
+  "types": "../include/promise/index.d.ts",
+  "import": "../lib/promise/index.mjs",
+  "main": "../lib/promise/index.js",
+  "module": "../lib/promise/index.esm.js",
+  "source": "./src/index.ts",
+  "exports": {
+    "types": "./../include/promise/index.d.ts",
+    "import": "./../lib/promise/index.mjs",
+    "module": "./../lib/promise/index.esm.js",
+    "require": "./../lib/promise/index.js",
+    "source": "./src/index.ts"
+  },
+  "scripts": {
+    "watch": "microbundle -w",
+    "build": "microbundle",
+    "types:check": "tsc --noEmit",
+    "clean": "rimraf lib include"
+  },
+  "peerDependencies": {
+    "@21gram-consulting/invertible": "*",
+    "@21gram-consulting/invertible/utility": "*",
+    "@21gram-consulting/invertible/pipe": "*"
+  }
+}

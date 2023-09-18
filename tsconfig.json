@@ -37,12 +37,9 @@
       "ESNext"
     ],
     "baseUrl": ".",
-    "rootDir": "src",
-    "outDir": "lib",
-    "declarationDir": "include",
     "paths": {
       "@21gram-consulting/invertible": [
-        "src/invertible"
+        "invertible"
       ],
       "@21gram-consulting/invertible/utility": [
         "src/utility"
@@ -52,9 +49,6 @@
       ]
     }
   },
-  "include": [
-    "include/global.d.ts"
-  ],
   "exclude": [
     "node_modules",
     "lib",

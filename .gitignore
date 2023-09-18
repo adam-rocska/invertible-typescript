@@ -4,3 +4,6 @@ tmp
 var
 node_modules
 coverage
+
+*/include
+!*/include/global.d.ts

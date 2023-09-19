@@ -12,7 +12,7 @@ import {Pipeline} from "./Pipeline";
 import inverse from "./inverse";
 import proverse from "./proverse";
 
-type PreliminaryTasks =
+export type PreliminaryTasks =
   | Consecutive<NonEmptyOf<Proverse>>
   | [];
 

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig.json",
+  "extends": "./tsconfig.json",
+  "include": [
+    "invertible/src",
+    "pipe/src",
+    "utility/src",
+    "global.d.ts"
+  ],
+  "typedocOptions": {
+    "name": "Invertible Functions & Pipelines",
+    "includeVersion": true,
+    "entryPoints": [
+      "invertible/src/index.ts",
+      "pipe/src/index.ts",
+      "utility/src/index.ts"
+    ],
+    "entryPointStrategy": "expand",
+    "out": "var/docs",
+    "disableSources": true,
+    "readme": "./README.md",
+    "searchInComments": true,
+    "navigationLinks": {
+      "21Gram Consulting": "https://www.21gram.consulting",
+      "GitHub": "https://github.com/21GramConsulting/invertible"
+    }
+  }
+}

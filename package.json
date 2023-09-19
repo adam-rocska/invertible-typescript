@@ -77,7 +77,7 @@
     "types:check": "pnpm -r run types:check",
     "prepublishOnly": "pnpm clean && pnpm build",
     "publish-beta": "pnpm publish --tag beta",
-    "doc": "typedoc",
+    "doc": "typedoc --tsconfig tsconfig.doc.json",
     "lint": "eslint .",
     "coverage": "jest --coverage",
     "test": "jest",

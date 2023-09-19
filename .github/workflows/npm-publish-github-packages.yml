@@ -12,11 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: npm ci
-      - run: npm test
+      - uses: ./.github/workflows/install
+      - name: Lint and test
+        run: |
+          pnpm run-all-checks
+          pnpm clean
+          pnpm build
+          pnpm attw
+          pnpm test:build
 
   publish-gpr:
     needs: build
@@ -26,13 +29,15 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/workflows/install
       - uses: actions/setup-node@v3
         with:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
           scope: "@21gram-consulting"
-      - run: npm ci
-      - run: npm run build
+      - run: pnpm install --frozen-lockfile # unsure, but they said it's equivalent: https://stackoverflow.com/questions/70154568/pnpm-equivalent-command-for-npm-ci
+      - run: pnpm clean
+      - run: pnpm build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

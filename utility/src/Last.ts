@@ -3,7 +3,7 @@ import {NonEmptyOf} from "./NonEmpty";
 export type Last<Tuple extends NonEmptyOf<any>> = [
   any, // this is the smartest idea I had in years
   ...Tuple
-][Tuple["length"]];
+][Tuple[`length`]];
 export const Last = <
   Tuple extends NonEmptyOf<any>
 >(tuple: Tuple): Last<Tuple> => tuple[tuple.length - 1];
@@ -16,7 +16,7 @@ export const isLastOf = <
   Element
 >(
   element: Element,
-  tuple: Tuple,
+  tuple: Tuple
 ): element is Last<Tuple> => {
   return tuple[tuple.length - 1] === element;
 };
@@ -35,4 +35,4 @@ export const LastOr = <
   defaultIfEmpty: DefaultIfEmpty
 ): LastOr<Tuple, DefaultIfEmpty> => {
   return tuple[tuple.length - 1] ?? defaultIfEmpty;
-}
+};

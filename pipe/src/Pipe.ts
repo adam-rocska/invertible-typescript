@@ -9,7 +9,7 @@ import {First, IsNonEmptyOf, Last, NonEmptyOf, Tuple} from "@21gram-consulting/i
 import {Composition} from "./Composition";
 import {AreConsecutive, Consecutive} from "./Consecutive";
 import {Pipeline} from "./Pipeline";
-import inverse from "./inverse"
+import inverse from "./inverse";
 import proverse from "./proverse";
 
 type PreliminaryTasks =

@@ -18,4 +18,4 @@ export const FirstOr = <
   defaultIfEmpty: DefaultIfEmpty
 ): FirstOr<Tuple, DefaultIfEmpty> => {
   return tuple[0] ?? defaultIfEmpty;
-}
+};

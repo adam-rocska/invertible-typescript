@@ -2,25 +2,25 @@ import {Proverse} from '@21gram-consulting/invertible';
 // It's by design private but we gotta test it.
 import proverse from '#pipe/proverse';
 
-describe('proverse', () => {
-  it('should return the output of the task if alone.', async () => {
+describe(`proverse`, () => {
+  it(`should return the output of the task if alone.`, async () => {
     const task = async (input: number) => input + 1;
     expect(await proverse([task], 0)).toBe(1);
   });
 
-  it('should return the output of the last task if multiple.', async () => {
+  it(`should return the output of the last task if multiple.`, async () => {
     const task1 = async (input: number) => input + 1;
     const task2 = async (input: number) => input + 1;
     expect(await proverse([task1, task2], 0)).toBe(2);
   });
 
-  it('should return the output of the last task if multiple.', async () => {
+  it(`should return the output of the last task if multiple.`, async () => {
     const task1 = async (input: number) => input + 1;
     const task2 = async (input: number) => input + 1;
     expect(await proverse([task1, task2], 0)).toBe(2);
   });
 
-  it('should handle a pipeline with multiple types', async () => {
+  it(`should handle a pipeline with multiple types`, async () => {
     const task1 = Proverse<number, number>(async v => v + 1);
     const toString = Proverse<number, string>(async v => v.toString());
     const append = (expression: string) => Proverse<string, string>(async (to: string) => to + expression);
@@ -35,7 +35,7 @@ describe('proverse', () => {
     const output = await proverse([
       task1,
       toString,
-      append(' as a result.'),
+      append(` as a result.`),
       task2,
       isInLimits(0, 2),
       task3

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "Invertible Functions & Pipelines",
+  "includeVersion": true,
+  "entryPoints": [
+    "./invertible/src/index.ts",
+    "./pipe/src/index.ts",
+    "./utility/src/index.ts"
+  ],
+  "entryPointStrategy": "expand",
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.js",
+    "**/*.mjs"
+  ],
+  "out": "var/docs",
+  "disableSources": true,
+  "readme": "./README.md",
+  "searchInComments": true,
+  "navigationLinks": {
+    "21Gram Consulting": "https://www.21gram.consulting",
+    "GitHub": "https://github.com/21GramConsulting/invertible"
+  }
+}

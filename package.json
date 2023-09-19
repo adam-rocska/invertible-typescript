@@ -126,8 +126,5 @@
   },
   "browserslist": [
     "last 3 years"
-  ],
-  "resolutions": {
-    "rollup": "^3.28.0"
-  }
+  ]
 }

@@ -6,25 +6,23 @@ import {pathsToModuleNameMapper} from "ts-jest";
 let moduleNameMapper;
 let modulePathIgnorePatterns;
 
-if (!process.env.TEST_AGAINST_ARTIFACTS) {
-  execSync(`pnpm clean`);
-  moduleNameMapper = Object.fromEntries(
-    Object.entries(pathsToModuleNameMapper(tsConfigJson.compilerOptions.paths))
-      .map(([from, to]) => [
-        [from, to],
-        [
-          '^#' + from.split('/').pop().replace('$', '/(.*)$'),
-          to.replace('index.ts', '$1')
-        ]
-      ])
-      .reduce((a,b) => a.concat(b))
-      .map(([from, to]) => [from, `<rootDir>/${to}`])
-      .sort()
-  );
-  modulePathIgnorePatterns = [
-    "dist"
-  ];
-}
+// TODO: bring back the "TEST_AGAINST_ARTIFACTS" feature
+moduleNameMapper = Object.fromEntries(
+  Object.entries(pathsToModuleNameMapper(tsConfigJson.compilerOptions.paths))
+    .map(([from, to]) => [
+      [from, to],
+      [
+        '^#' + from.split('/').pop().replace('$', '/(.*)$'),
+        to.replace('index.ts', '$1')
+      ]
+    ])
+    .reduce((a,b) => a.concat(b))
+    .map(([from, to]) => [from, `<rootDir>/${to}`])
+    .sort()
+);
+modulePathIgnorePatterns = [
+  "dist"
+];
 
 export default {
   testEnvironment: `node`,

@@ -36,9 +36,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: |
-          npm ci
-          npm run doc
+      - run: pnpm install --frozen-lockfile # unsure, but they said it's equivalent: https://stackoverflow.com/questions/70154568/pnpm-equivalent-command-for-npm-ci
+      - run: pnpm doc
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

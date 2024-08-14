@@ -1,4 +1,4 @@
-# @adam-rocska/invertible
+# Invertible Functions for TS & JS
 
 [![NPM Version](https://img.shields.io/npm/v/@adam-rocska/invertible.svg)](https://www.npmjs.com/package/@adam-rocska/invertible)
 [![License](https://img.shields.io/npm/l/@adam-rocska/invertible.svg)](https://opensource.org/licenses/MIT)

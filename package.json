@@ -90,8 +90,8 @@
     "run-all-checks": "pnpm types:check && pnpm lint"
   },
   "author": {
-    "name": "Adam Laszlo Rocska",
-    "url": "https://github.com/adam-rocska"
+    "name": "Ádám László Rocska",
+    "url": "https://adam-rocska.github.io"
   },
   "license": "MIT",
   "devDependencies": {

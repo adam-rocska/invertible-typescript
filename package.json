@@ -84,25 +84,10 @@
     "url": "https://github.com/21GramConsulting/invertible/issues"
   },
   "scripts": {
-    "csb:install": "corepack enable && corepack pnpm i",
-    "csb:build": "pnpm build",
-    "clean": "pnpm -r run clean && rimraf lib coverage var tmp include/*/",
-    "build": "pnpm -r run build",
-    "attw": "attw --pack",
-    "types:check": "pnpm -r run types:check",
-    "prepublishOnly": "pnpm clean && pnpm build",
-    "publish-beta": "pnpm publish --tag beta",
-    "doc": "typedoc --tsconfig tsconfig.doc.json",
-    "lint": "eslint .",
-    "coverage": "jest --coverage",
-    "test": "jest",
-    "test:unit": "pnpm test -- --testPathPattern=test/unit",
-    "test:uat": "pnpm test -- --testPathPattern=test/uat",
-    "test:unit:coverage": "pnpm test:unit -- --coverage --coverageDirectory=var/unit-test-coverage --collectCoverageFrom=./invertible/**/*",
-    "test:uat:coverage": "pnpm test:uat -- --coverage --coverageDirectory=var/uat-test-coverage --collectCoverageFrom=./invertible/**/*",
-    "serve:coverage:unit": "npx serve var/unit-test-coverage/lcov-report",
-    "serve:coverage:uat": "npx serve var/uat-test-coverage/lcov-report",
-    "run-all-checks": "pnpm types:check && pnpm lint"
+    "clean": "rimraf dist",
+    "build": "bunchee",
+    "test": "jest --env node",
+    "check": "pnpm eslint && pnpm attw --pack"
   },
   "author": {
     "name": "Ádám László Rocska",

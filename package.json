@@ -19,44 +19,57 @@
     "composition"
   ],
   "packageManager": "pnpm@9.4.0",
-  "main": "./invertible/dist/index.js",
-  "module": "./invertible/dist/index.esm.js",
-  "types": "./invertible/dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "utility": [
-        "./utility/dist/index.d.ts"
-      ],
-      "pipe": [
-        "./pipe/dist/index.d.ts"
-      ]
-    }
-  },
+  "main": "./dist/cjs/invertible.js",
+  "module": "./dist/es/invertible.mjs",
+  "types": "./dist/cjs/invertible.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "import": "./invertible/dist/index.mjs",
-      "module": "./invertible/dist/index.esm.js",
-      "require": "./invertible/dist/index.js"
+      "import": {
+        "types": "./dist/es/invertible.d.mts",
+        "default": "./dist/es/invertible.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/invertible.d.ts",
+        "default": "./dist/cjs/invertible.js"
+      }
     },
     "./pipe": {
-      "import": "./pipe/dist/index.mjs",
-      "module": "./pipe/dist/index.esm.js",
-      "require": "./pipe/dist/index.js"
+      "import": {
+        "types": "./dist/es/pipe.d.mts",
+        "default": "./dist/es/pipe.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/pipe.d.ts",
+        "default": "./dist/cjs/pipe.js"
+      }
+    },
+    "./promise": {
+      "import": {
+        "types": "./dist/es/promise.d.mts",
+        "default": "./dist/es/promise.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/promise.d.ts",
+        "default": "./dist/cjs/promise.js"
+      }
     },
     "./utility": {
-      "import": "./utility/dist/index.mjs",
-      "module": "./utility/dist/index.esm.js",
-      "require": "./utility/dist/index.js"
+      "import": {
+        "types": "./dist/es/utility.d.mts",
+        "default": "./dist/es/utility.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/utility.d.ts",
+        "default": "./dist/cjs/utility.js"
+      }
     }
   },
   "files": [
-    "invertible/dist/**/*.{js,d.ts,mjs,d.mts}",
-    "pipe/dist/**/*.{js,d.ts,mjs,d.mts}",
-    "utility/dist/**/*.{js,d.ts,mjs,d.mts}",
-    "invertible/package.json",
-    "pipe/package.json",
-    "utility/package.json"
+    "dist",
+    "pipe",
+    "promise",
+    "utility"
   ],
   "homepage": "https://21gramconsulting.github.io/invertible/",
   "publishConfig": {
@@ -111,8 +124,8 @@
     "pnpm": "^9.7.0",
     "rimraf": "^5.0.10",
     "semver": "^7.6.3",
-    "typedoc": "^0.25.13",
-    "typedoc-plugin-coverage": "^2.2.0",
+    "typedoc": "^0.26.5",
+    "typedoc-plugin-coverage": "^3.3.0",
     "typedoc-plugin-mdn-links": "^3.2.8",
     "typescript": "^5.5.4"
   },

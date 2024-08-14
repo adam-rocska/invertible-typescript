@@ -1,17 +1,6 @@
 {
-  "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "module": "./dist/index.esm.js",
-    "require": "./dist/index.js"
-  },
-  "private": true,
-  "scripts": {
-    "watch": "bunchee -w",
-    "build": "bunchee",
-    "types:check": "tsc --noEmit",
-    "clean": "rimraf lib include"
-  }
+  "main": "../dist/cjs/utility.js",
+  "module": "../dist/es/utility.mjs",
+  "types": "../dist/cjs/utility.d.ts",
+  "private": true
 }

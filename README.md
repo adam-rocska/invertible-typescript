@@ -5,12 +5,6 @@
 
 A library for creating and managing invertible functions and type-safe pipelines in TypeScript.
 
-## Features
-
-- **Invertible Functions**: Easily create and manage invertible pure functions.
-- **Type-Safe Pipelines**: Organize functions into statically typed, strict type-safe pipelines.
-- **Functional Programming**: Embrace functional programming principles with ease.
-
 ## Installation
 
 To install the package, use npm or yarn:
@@ -25,7 +19,7 @@ or
 pnpm add @adam-rocska/invertible
 ```
 
-## USage
+## Usage
 
 Simple example:
 
@@ -57,6 +51,12 @@ test(`Simple arithmetics example`, async () => {
   expect(await pipeExample(1)).toBe(10);
 });
 ```
+
+## Usefulness Ideas
+
+1. Undo-able user interface actions
+2. Reversible CI pipeline steps and pipelines
+3. Bidirectional data coding
 
 ## Contributing
 

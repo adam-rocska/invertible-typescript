@@ -30,31 +30,8 @@
     "sourceMap": true,
     "isolatedModules": true,
     "useDefineForClassFields": true,
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
-    "target": "ESNext",
-    "lib": [
-      "ESNext"
-    ],
-    "outDir": "dist",
-    "rootDir": ".",
-    "baseUrl": ".",
-    "paths": {
-      "@21gram-consulting/invertible": [
-        "invertible/src/index.ts"
-      ],
-      "@21gram-consulting/invertible/utility": [
-        "utility/src/index.ts"
-      ],
-      "@21gram-consulting/invertible/pipe": [
-        "pipe/src/index.ts"
-      ]
-    }
-  },
-  "exclude": [
-    "node_modules",
-    "lib",
-    "coverage",
-    "dist"
-  ]
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "target": "ESNext"
+  }
 }

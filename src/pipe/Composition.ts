@@ -1,5 +1,5 @@
-import {InputOf, Invertible, OutputOf, Proverse} from "@21gram-consulting/invertible";
-import {First, IsEvery, Last, NonEmptyOf} from "@21gram-consulting/invertible/utility";
+import {InputOf, Invertible, OutputOf, Proverse} from "../invertible";
+import {First, IsEvery, Last, NonEmptyOf} from "../utility";
 
 export type Composition<
   Tasks extends NonEmptyOf<Proverse>

@@ -4,8 +4,8 @@ import {
   Invertible,
   Proverse,
   isInvertible
-} from "@21gram-consulting/invertible";
-import {First, IsNonEmptyOf, Last, NonEmptyOf, Tuple} from "@21gram-consulting/invertible/utility";
+} from "../invertible";
+import {First, IsNonEmptyOf, Last, NonEmptyOf, Tuple} from "../utility";
 import {Composition} from "./Composition";
 import {AreConsecutive, Consecutive} from "./Consecutive";
 import {Pipeline} from "./Pipeline";

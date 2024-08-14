@@ -18,45 +18,58 @@
     "stateless",
     "composition"
   ],
-  "packageManager": "pnpm@8.7.5",
-  "main": "./invertible/dist/index.js",
-  "module": "./invertible/dist/index.esm.js",
-  "types": "./invertible/dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "utility": [
-        "./utility/dist/index.d.ts"
-      ],
-      "pipe": [
-        "./pipe/dist/index.d.ts"
-      ]
-    }
-  },
+  "packageManager": "pnpm@9.4.0",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/es/index.mjs",
+  "types": "./dist/cjs/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "import": "./invertible/dist/index.mjs",
-      "module": "./invertible/dist/index.esm.js",
-      "require": "./invertible/dist/index.js"
+      "import": {
+        "types": "./dist/es/index.d.mts",
+        "default": "./dist/es/index.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
     },
     "./pipe": {
-      "import": "./pipe/dist/index.mjs",
-      "module": "./pipe/dist/index.esm.js",
-      "require": "./pipe/dist/index.js"
+      "import": {
+        "types": "./dist/es/pipe.d.mts",
+        "default": "./dist/es/pipe.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/pipe.d.ts",
+        "default": "./dist/cjs/pipe.js"
+      }
+    },
+    "./promise": {
+      "import": {
+        "types": "./dist/es/promise.d.mts",
+        "default": "./dist/es/promise.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/promise.d.ts",
+        "default": "./dist/cjs/promise.js"
+      }
     },
     "./utility": {
-      "import": "./utility/dist/index.mjs",
-      "module": "./utility/dist/index.esm.js",
-      "require": "./utility/dist/index.js"
+      "import": {
+        "types": "./dist/es/utility.d.mts",
+        "default": "./dist/es/utility.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/utility.d.ts",
+        "default": "./dist/cjs/utility.js"
+      }
     }
   },
   "files": [
-    "invertible/dist/**/*.{js,d.ts,mjs,d.mts}",
-    "pipe/dist/**/*.{js,d.ts,mjs,d.mts}",
-    "utility/dist/**/*.{js,d.ts,mjs,d.mts}",
-    "invertible/package.json",
-    "pipe/package.json",
-    "utility/package.json"
+    "dist",
+    "pipe",
+    "promise",
+    "utility"
   ],
   "homepage": "https://21gramconsulting.github.io/invertible/",
   "publishConfig": {
@@ -71,25 +84,10 @@
     "url": "https://github.com/21GramConsulting/invertible/issues"
   },
   "scripts": {
-    "csb:install": "corepack enable && corepack pnpm i",
-    "csb:build": "pnpm build",
-    "clean": "pnpm -r run clean && rimraf lib coverage var tmp include/*/",
-    "build": "pnpm -r run build",
-    "attw": "attw --pack",
-    "types:check": "pnpm -r run types:check",
-    "prepublishOnly": "pnpm clean && pnpm build",
-    "publish-beta": "pnpm publish --tag beta",
-    "doc": "typedoc --tsconfig tsconfig.doc.json",
-    "lint": "eslint .",
-    "coverage": "jest --coverage",
-    "test": "jest",
-    "test:unit": "pnpm test -- --testPathPattern=test/unit",
-    "test:uat": "pnpm test -- --testPathPattern=test/uat",
-    "test:unit:coverage": "pnpm test:unit -- --coverage --coverageDirectory=var/unit-test-coverage --collectCoverageFrom=./invertible/**/*",
-    "test:uat:coverage": "pnpm test:uat -- --coverage --coverageDirectory=var/uat-test-coverage --collectCoverageFrom=./invertible/**/*",
-    "serve:coverage:unit": "npx serve var/unit-test-coverage/lcov-report",
-    "serve:coverage:uat": "npx serve var/uat-test-coverage/lcov-report",
-    "run-all-checks": "pnpm types:check && pnpm lint"
+    "clean": "rimraf dist",
+    "build": "bunchee",
+    "test": "jest --env node",
+    "check": "pnpm eslint && pnpm attw --pack"
   },
   "author": {
     "name": "Ádám László Rocska",
@@ -97,29 +95,64 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.10.2",
-    "@jest/globals": "^29.7.0",
-    "@playwright/test": "^1.46.0",
-    "@swc/core": "^1.7.10",
+    "@arethetypeswrong/cli": "^0.15.4",
     "@swc/jest": "^0.2.36",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.15",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "bunchee": "^3.9.3",
+    "bunchee": "^5.3.2",
     "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5",
     "eslint-plugin-node": "^11.1.0",
     "jest": "^29.7.0",
-    "microbundle": "^0.15.1",
+    "pnpm": "^9.7.0",
     "rimraf": "^5.0.10",
     "semver": "^7.6.3",
-    "ts-jest": "^29.2.4",
-    "typedoc": "^0.25.13",
-    "typedoc-plugin-coverage": "^2.2.0",
+    "typedoc": "^0.26.5",
+    "typedoc-plugin-coverage": "^3.3.0",
     "typedoc-plugin-mdn-links": "^3.2.8",
-    "typescript": "5.1.3"
+    "typescript": "^5.5.4"
   },
   "browserslist": [
     "last 3 years"
-  ]
+  ],
+  "jest": {
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "moduleNameMapper": {
+      "^@21gram-consulting/invertible$": "<rootDir>/src/index.ts",
+      "^@21gram-consulting/invertible/pipe$": "<rootDir>/src/pipe/index.ts",
+      "^@21gram-consulting/invertible/promise$": "<rootDir>/src/promise/index.ts",
+      "^@21gram-consulting/invertible/utility$": "<rootDir>/src/utility/index.ts",
+      "^#(.*)$": "<rootDir>/src/$1"
+    },
+    "transform": {
+      "^.+\\.(t|j)sx?$": [
+        "@swc/jest"
+      ]
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testTimeout": 1000
+  },
+  "typedocOptions": {
+    "name": "Invertible Functions & Pipelines",
+    "includeVersion": true,
+    "entryPoints": [
+      "./src/index.ts",
+      "./src/pipe/index.ts",
+      "./src/utility/index.ts",
+      "./src/promise/index.ts"
+    ],
+    "entryPointStrategy": "expand",
+    "readme": "./README.md",
+    "searchInComments": true,
+    "navigationLinks": {
+      "21Gram Consulting": "https://www.21gram.consulting",
+      "GitHub": "https://github.com/21GramConsulting/invertible"
+    }
+  }
 }

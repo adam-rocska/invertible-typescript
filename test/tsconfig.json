@@ -9,9 +9,6 @@
       "@adam-rocska/invertible/utility": [ "./src/utility/index.ts" ],
       "@adam-rocska/invertible/pipe": [ "./src/pipe/index.ts" ],
       "@adam-rocska/invertible/promise": [ "./src/promise/index.ts" ],
-      "#*": [ "./src/*" ],
-      "@adam-rocska/units-and-measurement": [ "./src/index.ts" ],
-      "@adam-rocska/units-and-measurement/shorthand": [ "./src/shorthand/index.ts" ],
       "!*": [ "./*" ]
     }
   },

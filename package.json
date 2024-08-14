@@ -122,7 +122,7 @@
       "^@adam-rocska/invertible/pipe$": "<rootDir>/src/pipe/index.ts",
       "^@adam-rocska/invertible/promise$": "<rootDir>/src/promise/index.ts",
       "^@adam-rocska/invertible/utility$": "<rootDir>/src/utility/index.ts",
-      "^#(.*)$": "<rootDir>/src/$1"
+      "^!(.*)": "<rootDir>/$1"
     },
     "transform": {
       "^.+\\.(t|j)sx?$": [

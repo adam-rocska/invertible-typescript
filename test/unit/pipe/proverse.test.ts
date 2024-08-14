@@ -1,6 +1,6 @@
 import {Proverse} from '@adam-rocska/invertible';
 // It's by design private but we gotta test it.
-import proverse from '#pipe/proverse';
+import proverse from '!src/pipe/proverse';
 
 describe(`proverse`, () => {
   it(`should return the output of the task if alone.`, async () => {

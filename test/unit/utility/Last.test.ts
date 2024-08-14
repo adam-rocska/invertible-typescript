@@ -1,4 +1,4 @@
-import {Last, LastOr, isLastOf} from "@21gram-consulting/invertible/utility";
+import {Last, LastOr, isLastOf} from "@adam-rocska/invertible/utility";
 
 describe(`.Last`, () => {
   it(`returns the last element of a tuple`, () => {

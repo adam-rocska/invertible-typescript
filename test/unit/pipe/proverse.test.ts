@@ -1,4 +1,4 @@
-import {Proverse} from '@21gram-consulting/invertible';
+import {Proverse} from '@adam-rocska/invertible';
 // It's by design private but we gotta test it.
 import proverse from '#pipe/proverse';
 

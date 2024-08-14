@@ -1,5 +1,5 @@
-import {Proverse} from '@21gram-consulting/invertible';
-import {Consecutive} from '@21gram-consulting/invertible/pipe';
+import {Proverse} from '@adam-rocska/invertible';
+import {Consecutive} from '@adam-rocska/invertible/pipe';
 
 describe(`Consecutive`, () => {
   it(`should return the given value unaltered, same reference and all, since it's just a utility runtime type.`, async () => {

@@ -1,5 +1,5 @@
 import inverse from '#pipe/inverse';
-import {Invertible} from '@21gram-consulting/invertible';
+import {Invertible} from '@adam-rocska/invertible';
 
 describe(`inverse`, () => {
   it(`should return the inverse output of the task if alone.`, async () => {

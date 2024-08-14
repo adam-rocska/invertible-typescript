@@ -1,5 +1,5 @@
 {
-  "name": "@21gram-consulting/invertible",
+  "name": "@adam-rocska/invertible",
   "version": "1.1.0",
   "description": "A library for creating and managing invertible functions and type-safe pipelines in TypeScript.",
   "keywords": [
@@ -71,17 +71,16 @@
     "promise",
     "utility"
   ],
-  "homepage": "https://21gramconsulting.github.io/invertible/",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/21GramConsulting/invertible.git"
+    "url": "https://github.com/adam-rocska/invertible-typescript.git"
   },
   "bugs": {
-    "url": "https://github.com/21GramConsulting/invertible/issues"
+    "url": "https://github.com/adam-rocska/invertible-typescript/issues"
   },
   "scripts": {
     "clean": "rimraf dist",
@@ -109,9 +108,6 @@
     "pnpm": "^9.7.0",
     "rimraf": "^5.0.10",
     "semver": "^7.6.3",
-    "typedoc": "^0.26.5",
-    "typedoc-plugin-coverage": "^3.3.0",
-    "typedoc-plugin-mdn-links": "^3.2.8",
     "typescript": "^5.5.4"
   },
   "browserslist": [
@@ -122,10 +118,10 @@
       "node_modules"
     ],
     "moduleNameMapper": {
-      "^@21gram-consulting/invertible$": "<rootDir>/src/index.ts",
-      "^@21gram-consulting/invertible/pipe$": "<rootDir>/src/pipe/index.ts",
-      "^@21gram-consulting/invertible/promise$": "<rootDir>/src/promise/index.ts",
-      "^@21gram-consulting/invertible/utility$": "<rootDir>/src/utility/index.ts",
+      "^@adam-rocska/invertible$": "<rootDir>/src/index.ts",
+      "^@adam-rocska/invertible/pipe$": "<rootDir>/src/pipe/index.ts",
+      "^@adam-rocska/invertible/promise$": "<rootDir>/src/promise/index.ts",
+      "^@adam-rocska/invertible/utility$": "<rootDir>/src/utility/index.ts",
       "^#(.*)$": "<rootDir>/src/$1"
     },
     "transform": {
@@ -137,22 +133,5 @@
       "/node_modules/"
     ],
     "testTimeout": 1000
-  },
-  "typedocOptions": {
-    "name": "Invertible Functions & Pipelines",
-    "includeVersion": true,
-    "entryPoints": [
-      "./src/index.ts",
-      "./src/pipe/index.ts",
-      "./src/utility/index.ts",
-      "./src/promise/index.ts"
-    ],
-    "entryPointStrategy": "expand",
-    "readme": "./README.md",
-    "searchInComments": true,
-    "navigationLinks": {
-      "21Gram Consulting": "https://www.21gram.consulting",
-      "GitHub": "https://github.com/21GramConsulting/invertible"
-    }
   }
 }

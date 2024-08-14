@@ -1,4 +1,4 @@
-import {Proverse} from "@21gram-consulting/invertible";
+import {Proverse} from "@adam-rocska/invertible";
 
 describe(`Proverse`, () => {
   it(`should return a totally new function value that acts like a proxy.`, async () => {

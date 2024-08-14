@@ -1,4 +1,4 @@
-import {Invertible, Proverse, isInvertible} from "@21gram-consulting/invertible";
+import {Invertible, Proverse, isInvertible} from "@adam-rocska/invertible";
 
 describe(`Invertible`, () => {
   it(`should create an invertible function.`, () => {

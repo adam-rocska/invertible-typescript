@@ -1,4 +1,4 @@
-import {NonEmpty, NonEmptyOf, IsNonEmptyOf, Tuple} from "@21gram-consulting/invertible/utility";
+import {NonEmpty, NonEmptyOf, IsNonEmptyOf, Tuple} from "@adam-rocska/invertible/utility";
 
 describe(`.NonEmpty`, () => {
   it(`returns a non-empty tuple`, () => {

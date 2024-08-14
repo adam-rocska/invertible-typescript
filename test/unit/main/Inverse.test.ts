@@ -1,4 +1,4 @@
-import {Inverse} from "@21gram-consulting/invertible";
+import {Inverse} from "@adam-rocska/invertible";
 
 describe(`Inverse`, () => {
   it(`should return a totally new function value that acts like a proxy.`, async () => {

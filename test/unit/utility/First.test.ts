@@ -1,4 +1,4 @@
-import {Tuple, First, FirstOr} from "@21gram-consulting/invertible/utility";
+import {Tuple, First, FirstOr} from "@adam-rocska/invertible/utility";
 
 describe(`First`, () => {
   it(`returns the first element of a tuple`, () => {

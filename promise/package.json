@@ -1,6 +1,0 @@
-{
-  "main": "../dist/cjs/promise.js",
-  "module": "../dist/es/promise.mjs",
-  "types": "../dist/cjs/promise.d.ts",
-  "private": true
-}

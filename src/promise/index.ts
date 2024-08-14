@@ -1,1 +1,0 @@
-export default `Go to this package's github page, and give us a sign that you need it!`;

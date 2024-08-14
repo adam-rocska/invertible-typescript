@@ -44,16 +44,6 @@
         "default": "./dist/cjs/pipe.js"
       }
     },
-    "./promise": {
-      "import": {
-        "types": "./dist/es/promise.d.mts",
-        "default": "./dist/es/promise.mjs"
-      },
-      "require": {
-        "types": "./dist/cjs/promise.d.ts",
-        "default": "./dist/cjs/promise.js"
-      }
-    },
     "./utility": {
       "import": {
         "types": "./dist/es/utility.d.mts",
@@ -68,7 +58,6 @@
   "files": [
     "dist",
     "pipe",
-    "promise",
     "utility"
   ],
   "publishConfig": {
@@ -120,7 +109,6 @@
     "moduleNameMapper": {
       "^@adam-rocska/invertible$": "<rootDir>/src/index.ts",
       "^@adam-rocska/invertible/pipe$": "<rootDir>/src/pipe/index.ts",
-      "^@adam-rocska/invertible/promise$": "<rootDir>/src/promise/index.ts",
       "^@adam-rocska/invertible/utility$": "<rootDir>/src/utility/index.ts",
       "^!(.*)": "<rootDir>/$1"
     },

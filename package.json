@@ -1,7 +1,7 @@
 {
   "name": "@21gram-consulting/invertible",
   "version": "1.1.0",
-  "description": "21Gram Consulting's library for invertible functions and pipelines. It enables you to implement invertible pure functions and organize invertible, proverse or inverse functions into statically typed strict type-safe pipelines.",
+  "description": "A library for creating and managing invertible functions and type-safe pipelines in TypeScript.",
   "keywords": [
     "invertible",
     "pipeline",

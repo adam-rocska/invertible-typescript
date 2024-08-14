@@ -1,5 +1,5 @@
-import {InputOf, OutputOf} from "@21gram-consulting/invertible";
-import {First, IsNonEmptyOf, Last} from "@21gram-consulting/invertible/utility";
+import {InputOf, OutputOf} from "../invertible";
+import {First, IsNonEmptyOf, Last} from "../utility";
 import {Consecutive} from "./Consecutive";
 
 export default async function proverse<

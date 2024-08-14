@@ -122,11 +122,11 @@
       "node_modules"
     ],
     "moduleNameMapper": {
-      "@21gram-consulting/invertible": "<rootDir>/src/index.ts",
-      "@21gram-consulting/invertible/pipe": "<rootDir>/src/pipe/index.ts",
-      "@21gram-consulting/invertible/promise": "<rootDir>/src/promise/index.ts",
-      "@21gram-consulting/invertible/utility": "<rootDir>/src/utility/index.ts",
-      "^#(.*)": "<rootDir>/$1"
+      "^@21gram-consulting/invertible$": "<rootDir>/src/index.ts",
+      "^@21gram-consulting/invertible/pipe$": "<rootDir>/src/pipe/index.ts",
+      "^@21gram-consulting/invertible/promise$": "<rootDir>/src/promise/index.ts",
+      "^@21gram-consulting/invertible/utility$": "<rootDir>/src/utility/index.ts",
+      "^#(.*)$": "<rootDir>/src/$1"
     },
     "transform": {
       "^.+\\.(t|j)sx?$": [

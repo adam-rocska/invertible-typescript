@@ -1,28 +1,19 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "baseUrl": "..",
     "paths": {
-      "@21gram-consulting/invertible": [
-        "invertible/src/index.ts"
-      ],
-      "@21gram-consulting/invertible/utility": [
-        "utility/src/index.ts"
-      ],
-      "@21gram-consulting/invertible/pipe": [
-        "pipe/src/index.ts"
-      ],
-      "#invertible/*": [
-        "invertible/src/*"
-      ],
-      "#utility/*": [
-        "utility/src/*"
-      ],
-      "#pipe/*": [
-        "pipe/src/*"
-      ]
+      "@21gram-consulting/invertible": [ "./src/index.ts" ],
+      "@21gram-consulting/invertible/utility": [ "./src/utility/index.ts" ],
+      "@21gram-consulting/invertible/pipe": [ "./src/pipe/index.ts" ],
+      "@21gram-consulting/invertible/promise": [ "./src/promise/index.ts" ],
+      "#*": [ "./src/*" ],
+      "@adam-rocska/units-and-measurement": [ "./src/index.ts" ],
+      "@adam-rocska/units-and-measurement/shorthand": [ "./src/shorthand/index.ts" ],
+      "!*": [ "./*" ]
     }
   },
-  "include": [
-    "./**/*.ts"
-  ]
+  "include": [ "./**/*.test.ts" ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "@adam-rocska/invertible",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A library for creating and managing invertible functions and type-safe pipelines in TypeScript.",
   "keywords": [
     "invertible",

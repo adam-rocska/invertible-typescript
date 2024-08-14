@@ -93,16 +93,6 @@
     "name": "Adam Laszlo Rocska",
     "url": "https://github.com/adam-rocska"
   },
-  "contributors": [
-    {
-      "name": "Ronald Legmann",
-      "url": "https://github.com/rlegmann"
-    },
-    {
-      "name": "Zsigmond Taroczy-Toth",
-      "url": "https://github.com/tzsiga"
-    }
-  ],
   "license": "MIT",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.10.2",

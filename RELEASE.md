@@ -1,14 +1,9 @@
-# 1.1.1
+# 1.1.2
 
-First release post-migration.
-Project was migrated from 21GramConsulting to adam-rocska.
+Dependency upgrade and funding notice mainly.
 
 ## Patch Changes
 
-- Only related to bundling, building, testing, and
-  publishing, the library API, nor its implementation should
-  have changed.
-- I decided to dump the typedoc docs. Typedoc is awful. It
-  looks like shit, works like shit, and doesn't add value
-  other than maybe some clumsy SEO hopes. This library will
-  soon have its own superdox once I'm done with my OSS rampage.
+- `pnpm upgrade` for housekeeping.
+- Added funding notice to `package.json`.
+- Added `collectCoverage` to jest.

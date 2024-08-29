@@ -1,6 +1,6 @@
 {
   "name": "@adam-rocska/invertible",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A library for creating and managing invertible functions and type-safe pipelines in TypeScript.",
   "keywords": [
     "invertible",
@@ -71,6 +71,12 @@
   "bugs": {
     "url": "https://github.com/adam-rocska/invertible-typescript/issues"
   },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/adam-rocska"
+    }
+  ],
   "scripts": {
     "clean": "rimraf dist",
     "build": "bunchee",
@@ -86,15 +92,15 @@
     "@arethetypeswrong/cli": "^0.15.4",
     "@swc/jest": "^0.2.36",
     "@types/jest": "^29.5.12",
-    "@types/node": "^22.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@types/node": "^22.5.1",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^6.21.0",
     "bunchee": "^5.3.2",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.6",
     "eslint-plugin-node": "^11.1.0",
     "jest": "^29.7.0",
-    "pnpm": "^9.7.0",
+    "pnpm": "^9.9.0",
     "rimraf": "^6.0.1",
     "semver": "^7.6.3",
     "typescript": "^5.5.4"
@@ -119,6 +125,9 @@
     },
     "testPathIgnorePatterns": [
       "/node_modules/"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts"
     ],
     "testTimeout": 1000
   }

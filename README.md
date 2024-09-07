@@ -3,6 +3,13 @@
 [![NPM Version](https://img.shields.io/npm/v/@adam-rocska/invertible.svg)](https://www.npmjs.com/package/@adam-rocska/invertible)
 [![License](https://img.shields.io/npm/l/@adam-rocska/invertible)](https://github.com/adam-rocska/invertible-typescript/blob/master/LICENSE)
 
+| Aspect               | Badge                                                                                                                                                     |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Minified             | [![Minified](https://badgen.net/bundlephobia/min/@adam-rocska/invertible)](https://bundlephobia.com/package/@adam-rocska/invertible)                      |
+| Minified + gzip      | [![Minified + gzip](https://badgen.net/bundlephobia/minzip/@adam-rocska/invertible)](https://bundlephobia.com/package/@adam-rocska/invertible)            |
+| Dependency Count     | [![Dependency Count](https://badgen.net/bundlephobia/dependency-count/@adam-rocska/invertible)](https://bundlephobia.com/package/@adam-rocska/invertible) |
+| Tree-shaking Support | [![Tree-shaking Support](https://badgen.net/bundlephobia/tree-shaking/@adam-rocska/invertible)](https://bundlephobia.com/package/@adam-rocska/invertible) |
+
 A library for creating and managing invertible functions and type-safe pipelines in TypeScript.
 
 ## Installation

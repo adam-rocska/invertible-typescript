@@ -3,3 +3,4 @@
 ## Patch Changes
 
 - Added useful badges to the README.md
+- Dependency upgrades

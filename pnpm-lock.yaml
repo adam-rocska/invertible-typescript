@@ -13,7 +13,7 @@ importers:
         version: 0.16.4
       '@swc/jest':
         specifier: ^0.2.36
-        version: 0.2.36(@swc/core@1.7.23(@swc/helpers@0.5.13))
+        version: 0.2.38(@swc/core@1.7.23(@swc/helpers@0.5.13))
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.13
@@ -652,8 +652,8 @@ packages:
   '@swc/helpers@0.5.13':
     resolution: {integrity: sha512-UoKGxQ3r5kYI9dALKJapMmuK+1zWM/H17Z1+iwnNmzcJRnfFuevZs375TA5rW31pu4BS4NoSy1fRsexDXfWn5w==}
 
-  '@swc/jest@0.2.36':
-    resolution: {integrity: sha512-8X80dp81ugxs4a11z1ka43FPhP+/e+mJNXJSxiNYk8gIX/jPBtY4gQTrKu/KIoco8bzKuPI5lUxjfLiGsfvnlw==}
+  '@swc/jest@0.2.38':
+    resolution: {integrity: sha512-HMoZgXWMqChJwffdDjvplH53g9G2ALQes3HKXDEdliB/b85OQ0CTSbxG8VSeCwiAn7cOaDVEt4mwmZvbHcS52w==}
     engines: {npm: '>= 7.0.0'}
     peerDependencies:
       '@swc/core': '*'
@@ -3566,7 +3566,7 @@ snapshots:
     dependencies:
       tslib: 2.7.0
 
-  '@swc/jest@0.2.36(@swc/core@1.7.23(@swc/helpers@0.5.13))':
+  '@swc/jest@0.2.38(@swc/core@1.7.23(@swc/helpers@0.5.13))':
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
       '@swc/core': 1.7.23(@swc/helpers@0.5.13)

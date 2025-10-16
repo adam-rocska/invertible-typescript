@@ -92,7 +92,7 @@
     "@arethetypeswrong/cli": "^0.18.1",
     "@swc/jest": "^0.2.36",
     "@types/jest": "^29.5.12",
-    "@types/node": "^22.5.4",
+    "@types/node": "^24.8.0",
     "@typescript-eslint/eslint-plugin": "^8.4.0",
     "@typescript-eslint/parser": "^8.4.0",
     "bunchee": "^5.4.0",

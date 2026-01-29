@@ -1,5 +1,5 @@
 import {InputOf, Invertible, OutputOf} from "../invertible";
-import {First, IsNonEmptyOf, Last, NonEmptyOf} from "..//utility";
+import {First, IsNonEmptyOf, Last, NonEmptyOf} from "../utility";
 import {Consecutive} from "./Consecutive";
 
 export default async function inverse<

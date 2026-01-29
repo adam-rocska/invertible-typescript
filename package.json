@@ -91,7 +91,7 @@
   "license": "MIT",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
-    "@eslint/js": "^8.57.1",
+    "@eslint/js": "^9.39.2",
     "@eslint/eslintrc": "^3.2.0",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

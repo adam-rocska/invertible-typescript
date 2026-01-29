@@ -81,6 +81,7 @@
     "clean": "rimraf dist",
     "build": "bunchee",
     "test": "jest --env node",
+    "eslint": "eslint . --max-warnings=0",
     "check": "pnpm eslint && pnpm attw --pack"
   },
   "author": {
@@ -90,10 +91,14 @@
   "license": "MIT",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
+    "@eslint/js": "^8.57.1",
+    "@eslint/eslintrc": "^3.2.0",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.1.0",
+    "@vercel/style-guide": "^6.0.0",
     "bunchee": "^6.9.4",
+    "eslint": "^8.57.1",
     "jest": "^30.2.0",
     "pnpm": "^10.28.2",
     "rimraf": "^6.1.2",

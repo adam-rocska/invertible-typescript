@@ -1,0 +1,62 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Invertible",
+  "description": "Type-safe invertible functions and pipelines for TypeScript.",
+  "colors": {
+    "primary": "#2563eb",
+    "light": "#e0f2fe",
+    "dark": "#0f172a"
+  },
+  "fonts": {
+    "family": "Space Grotesk"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": {
+      "theme": {
+        "light": "github-light",
+        "dark": "github-dark"
+      }
+    }
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Start",
+        "pages": [
+          "index",
+          "getting-started",
+          "concepts"
+        ]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          "pipelines",
+          "recipes",
+          "type-utilities"
+        ]
+      },
+      {
+        "group": "API",
+        "pages": [
+          "api-reference/invertible",
+          "api-reference/pipe",
+          "api-reference/utility"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "faq",
+          "release-notes",
+          "mintlify-features"
+        ]
+      }
+    ]
+  }
+}

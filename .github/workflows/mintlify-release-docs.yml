@@ -1,0 +1,99 @@
+name: Mintlify release docs
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  update-release-notes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update Mintlify release notes
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_NAME: ${{ github.event.release.name }}
+          RELEASE_BODY: ${{ github.event.release.body }}
+          RELEASE_URL: ${{ github.event.release.html_url }}
+          RELEASE_PUBLISHED: ${{ github.event.release.published_at }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import re
+          from datetime import datetime
+
+          path = "docs/release-notes.md"
+          tag = os.environ.get("RELEASE_TAG", "").strip()
+          name = os.environ.get("RELEASE_NAME", "").strip()
+          body = os.environ.get("RELEASE_BODY", "").strip()
+          url = os.environ.get("RELEASE_URL", "").strip()
+          published = os.environ.get("RELEASE_PUBLISHED", "").strip()
+
+          if not tag:
+            raise SystemExit("Missing release tag")
+
+          date_str = ""
+          if published:
+            try:
+              date_str = datetime.fromisoformat(published.replace("Z", "+00:00")).date().isoformat()
+            except ValueError:
+              date_str = ""
+
+          try:
+            with open(path, "r", encoding="utf-8") as fh:
+              content = fh.read()
+          except FileNotFoundError:
+            content = "---\n" + "title: Release notes\n" + "description: Changes by version.\n" + "---\n\n"
+
+          header_re = re.compile(rf"^##\\s+{re.escape(tag)}\\s*$", re.MULTILINE)
+          if header_re.search(content):
+            print("Release already documented.")
+            raise SystemExit(0)
+
+          lines = []
+          lines.append(f"## {tag}")
+          if date_str:
+            lines.append(f"_Released: {date_str}_")
+          if name and name != tag:
+            lines.append(f"**{name}**")
+          if body:
+            lines.append(body)
+          elif url:
+            lines.append(f"- See GitHub release: {url}")
+          else:
+            lines.append("- Release published.")
+          new_block = "\n".join(lines) + "\n\n"
+
+          if content.startswith("---"):
+            parts = content.split("---", 2)
+            if len(parts) >= 3:
+              frontmatter = "---" + parts[1] + "---\n\n"
+              rest = parts[2].lstrip("\n")
+              content = frontmatter + new_block + rest
+            else:
+              content = new_block + content
+          else:
+            content = new_block + content
+
+          with open(path, "w", encoding="utf-8") as fh:
+            fh.write(content)
+          PY
+
+      - name: Commit and push
+        run: |
+          if git status --porcelain | grep -q "docs/release-notes.md"; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add docs/release-notes.md
+            git commit -m "docs: add release notes for ${GITHUB_REF_NAME}"
+            git push
+          else
+            echo "No changes to commit."
+          fi

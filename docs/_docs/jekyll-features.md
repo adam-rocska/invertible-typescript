@@ -85,7 +85,7 @@ plugins:
   - jekyll-sitemap
 ```
 
-Then add `{% seo %}` in `head.html` to emit SEO metadata.
+Then add `{% raw %}{% seo %}{% endraw %}` in `head.html` to emit SEO metadata.
 
 ### Themes / remote themes
 

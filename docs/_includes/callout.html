@@ -1,7 +1,0 @@
-{% assign kind = include.kind | default: 'note' %}
-<div class="callout callout-{{ kind }}">
-  {% if include.title %}<div class="callout-title">{{ include.title }}</div>{% endif %}
-  <div class="callout-body">
-    {{ include.content | markdownify }}
-  </div>
-</div>

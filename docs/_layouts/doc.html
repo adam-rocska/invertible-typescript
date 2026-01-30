@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<div class="doc-layout">
+  <article class="doc-content">
+    <header class="doc-header">
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}<p class="doc-description">{{ page.description }}</p>{% endif %}
+    </header>
+    {{ content }}
+    <div class="doc-pagination">
+      {% assign docs = site.docs | sort: 'order' %}
+      {% for entry in docs %}
+        {% if entry.url == page.url %}
+          {% assign prev = docs[forloop.index0 | minus: 1] %}
+          {% assign next = docs[forloop.index0 | plus: 1] %}
+        {% endif %}
+      {% endfor %}
+      <div class="doc-pagination-links">
+        {% if prev %}<a class="button ghost" href="{{ prev.url | relative_url }}">← {{ prev.title }}</a>{% endif %}
+        {% if next %}<a class="button ghost" href="{{ next.url | relative_url }}">{{ next.title }} →</a>{% endif %}
+      </div>
+    </div>
+  </article>
+  {% include toc.html %}
+</div>

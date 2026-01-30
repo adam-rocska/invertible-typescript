@@ -12,11 +12,11 @@
       url: /docs/recipes/
     - title: Type utilities
       url: /docs/type-utilities/
-    - title: API: invertible
+    - title: "API: invertible"
       url: /docs/api-invertible/
-    - title: API: pipe
+    - title: "API: pipe"
       url: /docs/api-pipe/
-    - title: API: utility
+    - title: "API: utility"
       url: /docs/api-utility/
     - title: FAQ
       url: /docs/faq/

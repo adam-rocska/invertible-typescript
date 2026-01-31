@@ -1,55 +1,94 @@
 ---
-title: Mintlify features
-description: Extra features you can adopt without writing code.
+title: Jekyll features
+description: What this site uses and extra features you can enable later.
 ---
 
-This docs setup stays Markdown-only. If you want more later, Mintlify supports:
+This site already uses a bunch of Jekyll features:
 
-## OpenAPI pages
+- **Data files** (`_data/navigation.yml`) for navigation.
+- **Layouts** and **includes** to keep pages consistent.
+- **Sass/SCSS** for styling in `assets/css/style.scss`.
+- **Pretty permalinks** for clean URLs.
+- **Liquid** templating for nav, TOC, and search index.
 
-Add an API spec and reference it in `docs.json`.
+## Optional features you can add later
 
-```json
-{
-  "openapi": {
-    "file": "openapi.json"
-  }
-}
+### Blog posts
+
+Create `_posts` and add `YYYY-MM-DD-title.md` files:
+
+```md
+---
+layout: post
+title: "Announcing 1.2.0"
+---
+
+Post content here.
 ```
 
-## Tabs and callouts (Markdown-only)
+### Pagination
 
-Use components directly in Markdown:
+Enable in `_config.yml`:
 
-````md
-:::note
-You can call out important details.
-:::
-
-:::tabs
-::tab{title="TypeScript"}
-```ts
-const hello = "world";
+```yml
+paginate: 5
+paginate_path: "/blog/page:num/"
 ```
-::
-::tab{title="JavaScript"}
-```js
-const hello = "world";
+
+### Tags and categories
+
+Add to a post:
+
+```md
+---
+layout: post
+title: "New API"
+tags: [api, types]
+---
 ```
-::
-:::
-````
 
-## Code group and copy buttons
+Then loop over `site.tags` to generate tag pages.
 
-Mintlify adds copy buttons automatically to code blocks.
+### SEO tags
 
-## API playgrounds
+Add the plugin and include tag:
 
-If you add OpenAPI specs, Mintlify renders live API explorers.
+```yml
+plugins:
+  - jekyll-seo-tag
+```
 
-## Custom domains and analytics
+Then add `{% raw %}{% seo %}{% endraw %}` to `head.html`.
 
-Set `favicon`, `logo`, `analytics`, and `redirects` in `docs.json`.
+### Sitemaps
 
-If you want any of these turned on, I can wire them up while keeping your content Markdown-only.
+```yml
+plugins:
+  - jekyll-sitemap
+```
+
+### Multiple doc versions
+
+```yml
+collections:
+  v1:
+    output: true
+    permalink: /v1/:path/
+  v2:
+    output: true
+    permalink: /v2/:path/
+```
+
+### Redirects
+
+```yml
+plugins:
+  - jekyll-redirect-from
+```
+
+Then in front matter:
+
+```md
+redirect_from:
+  - /old-url/
+```

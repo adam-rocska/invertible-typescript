@@ -3,6 +3,11 @@ title: Getting started
 description: Install, write your first invertible function, and compose a pipeline.
 ---
 
+<div class="search-bar">
+  <input type="search" placeholder="Search docs..." data-search-input />
+</div>
+<div class="search-results" data-search-results></div>
+
 ## Install
 
 ```bash

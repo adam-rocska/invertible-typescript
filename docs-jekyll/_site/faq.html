@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mintlify features | Invertible</title>
-<meta name="description" content="Extra features you can adopt without writing code." />
+<title>FAQ | Invertible</title>
+<meta name="description" content="Practical answers about invertibility and typing." />
 <link rel="stylesheet" href="/assets/css/style.css" />
 <link rel="icon" href="/assets/img/favicon.svg" />
 <script defer src="/assets/js/toc.js"></script>
@@ -81,57 +81,28 @@
         <div class="doc-layout">
   <article class="doc-content">
     <header class="doc-header">
-      <h1>Mintlify features</h1>
-      <p class="doc-description">Extra features you can adopt without writing code.</p>
+      <h1>FAQ</h1>
+      <p class="doc-description">Practical answers about invertibility and typing.</p>
     </header>
-    <p>This docs setup stays Markdown-only. If you want more later, Mintlify supports:</p>
+    <h2 id="why-is-my-pipeline-not-invertible">Why is my pipeline not invertible?</h2>
 
-<h2 id="openapi-pages">OpenAPI pages</h2>
+<p>A pipeline is invertible only if <strong>every</strong> task is invertible. If you include a plain function, the pipeline becomes a <code class="language-plaintext highlighter-rouge">Proverse</code> and <code class="language-plaintext highlighter-rouge">.inverse</code> disappears.</p>
 
-<p>Add an API spec and reference it in <code class="language-plaintext highlighter-rouge">docs.json</code>.</p>
+<h2 id="why-do-i-get-a-consecutive-type-error">Why do I get a consecutive type error?</h2>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"openapi"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openapi.json"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">Consecutive</code> enforces that each task output matches the next task input. Fix the mismatch and the error goes away.</p>
 
-<h2 id="tabs-and-callouts-markdown-only">Tabs and callouts (Markdown-only)</h2>
+<h2 id="can-i-nest-pipelines">Can I nest pipelines?</h2>
 
-<p>Use components directly in Markdown:</p>
+<p>Yes. Pipelines are functions, so they can be nested or passed into other pipelines.</p>
 
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:::note
-You can call out important details.
-:::
+<h2 id="do-sync-tasks-return-a-promise">Do sync tasks return a promise?</h2>
 
-:::tabs
-::tab{title="TypeScript"}
-<span class="p">```</span><span class="nl">ts
-</span><span class="kd">const</span> <span class="nx">hello</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">;</span>
-<span class="p">```</span>
-::
-::tab{title="JavaScript"}
-<span class="p">```</span><span class="nl">js
-</span><span class="kd">const</span> <span class="nx">hello</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">;</span>
-<span class="p">```</span>
-::
-:::
-</code></pre></div></div>
+<p>Yes. The pipeline always returns a promise because tasks are awaited.</p>
 
-<h2 id="code-group-and-copy-buttons">Code group and copy buttons</h2>
+<h2 id="is-isinvertible-safe">Is isInvertible safe?</h2>
 
-<p>Mintlify adds copy buttons automatically to code blocks.</p>
-
-<h2 id="api-playgrounds">API playgrounds</h2>
-
-<p>If you add OpenAPI specs, Mintlify renders live API explorers.</p>
-
-<h2 id="custom-domains-and-analytics">Custom domains and analytics</h2>
-
-<p>Set <code class="language-plaintext highlighter-rouge">favicon</code>, <code class="language-plaintext highlighter-rouge">logo</code>, <code class="language-plaintext highlighter-rouge">analytics</code>, and <code class="language-plaintext highlighter-rouge">redirects</code> in <code class="language-plaintext highlighter-rouge">docs.json</code>.</p>
-
-<p>If you want any of these turned on, I can wire them up while keeping your content Markdown-only.</p>
+<p>It checks that <code class="language-plaintext highlighter-rouge">.inverse</code> exists, is a function, and points back. It does not validate mathematical correctness.</p>
 
   </article>
   
@@ -161,7 +132,7 @@ You can call out important details.
       <a href="https://github.com/adam-rocska/invertible-typescript/issues">Issues</a>
     </div>
   </div>
-  <div class="footer-meta">Last build: 2026-01-31 15:14 UTC</div>
+  <div class="footer-meta">Last build: 2026-01-31 15:16 UTC</div>
 </footer>
 
     </div>

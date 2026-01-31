@@ -1,0 +1,106 @@
+[
+  
+  
+  
+  
+  
+  {
+    "title": "Concepts",
+    "url": "/concepts/",
+    "content": "ProverseA proverse is any function from input to output. It can be sync or async.import { Proverse } from \"@adam-rocska/invertible\";const toUpper = Proverse((value: string) =&gt; value.toUpperCase());const length = Proverse(async (value: string) =&gt; value.length);InverseAn inverse goes the other way: output back to input.import { Inverse } from \"@adam-rocska/invertible\";type Encoder = (value: string) =&gt; Uint8Array;const decode = Inverse&lt;Encoder&gt;((bytes) =&gt; new TextDecoder().decode(bytes));InvertibleAn invertible links a proverse and its inverse, and keeps them connected.import { Invertible } from \"@adam-rocska/invertible\";const trim = Invertible(  (value: string) =&gt; value.trim(),  (value: string) =&gt; value);PipelinesA pipeline is a sequence of tasks where each output becomes the next input. Types guarantee alignment.import { pipe } from \"@adam-rocska/invertible/pipe\";const pipeline = pipe(  (n: number) =&gt; n + 1,  (n: number) =&gt; `#${n}`,  (value: string) =&gt; value.toUpperCase());If every task is invertible, the pipeline is invertible too."
+  },
+  
+  
+  
+  {
+    "title": "FAQ",
+    "url": "/faq/",
+    "content": "Why is my pipeline not invertible?A pipeline is invertible only if every task is invertible. If you include a plain function, the pipeline becomes a Proverse and .inverse disappears.Why do I get a consecutive type error?Consecutive enforces that each task output matches the next task input. Fix the mismatch and the error goes away.Can I nest pipelines?Yes. Pipelines are functions, so they can be nested or passed into other pipelines.Do sync tasks return a promise?Yes. The pipeline always returns a promise because tasks are awaited.Is isInvertible safe?It checks that .inverse exists, is a function, and points back. It does not validate mathematical correctness."
+  },
+  
+  
+  
+  {
+    "title": "Getting started",
+    "url": "/getting-started/",
+    "content": "  Installpnpm add @adam-rocska/invertiblenpm install @adam-rocska/invertibleFirst invertibleAn invertible function is a forward function paired with an inverse.import { Invertible } from \"@adam-rocska/invertible\";const increment = Invertible(  (n: number) =&gt; n + 1,  (n: number) =&gt; n - 1);await increment(1); // 2await increment.inverse(2); // 1Compose a pipelineUse pipe to chain tasks. If all tasks are invertible, the pipeline is invertible too.import { pipe } from \"@adam-rocska/invertible/pipe\";const double = Invertible(  (n: number) =&gt; n * 2,  (n: number) =&gt; n / 2);const pipeline = pipe(increment).pipe(double).pipe(increment);await pipeline(2); // 6await pipeline.inverse(6); // 2Sync + async togetherEvery task can be sync or async. The pipeline always returns a promise.const add = (n: number) =&gt; n + 1;const multiply = async (n: number) =&gt; n * 3;const mixed = pipe(add).pipe(multiply);await mixed(2); // 9"
+  },
+  
+  
+  
+  {
+    "title": "Invertible functions for TypeScript",
+    "url": "/",
+    "content": ""
+  },
+  
+  
+  
+  {
+    "title": "API: invertible",
+    "url": "/api-reference/invertible/",
+    "content": "MaybePromisetype MaybePromise&lt;T&gt; = T | PromiseLike&lt;T&gt;;Proversetype Proverse&lt;Input = any, Output = Input&gt; = (input: Input) =&gt; MaybePromise&lt;Output&gt;;import { Proverse } from \"@adam-rocska/invertible\";const toUpper = Proverse((value: string) =&gt; value.toUpperCase());Invertibletype Invertible&lt;Input = any, Output = Input&gt; = Proverse&lt;Input, Output&gt; &amp; {  readonly inverse: Invertible&lt;Output, Input&gt;};import { Invertible } from \"@adam-rocska/invertible\";const increment = Invertible(  (n: number) =&gt; n + 1,  (n: number) =&gt; n - 1);await increment(1); // 2await increment.inverse(2); // 1Inversetype Inverse&lt;Function extends Proverse&gt; = Proverse&lt;OutputOf&lt;Function&gt;, InputOf&lt;Function&gt;&gt;;import { Inverse } from \"@adam-rocska/invertible\";type Encoder = (value: string) =&gt; Uint8Array;const decode = Inverse&lt;Encoder&gt;((bytes) =&gt; new TextDecoder().decode(bytes));InputOf / OutputOftype InputOf&lt;F extends Proverse&gt; = Parameters&lt;F&gt;[0];type OutputOf&lt;F extends Proverse&gt; = Awaited&lt;ReturnType&lt;F&gt;&gt;;isInvertibleimport { isInvertible } from \"@adam-rocska/invertible\";if (isInvertible(increment)) {  await increment.inverse(2);}Notes:  isInvertible checks for .inverse, that it is a function, and that the inverse points back.  It does not verify mathematical correctness of your inverse."
+  },
+  
+  
+  
+  {
+    "title": "Jekyll features",
+    "url": "/jekyll-features/",
+    "content": "This site already uses a bunch of Jekyll features:  Data files (_data/navigation.yml) for navigation.  Layouts and includes to keep pages consistent.  Sass/SCSS for styling in assets/css/style.scss.  Pretty permalinks for clean URLs.  Liquid templating for nav, TOC, and search index.Optional features you can add laterBlog postsCreate _posts and add YYYY-MM-DD-title.md files:---layout: posttitle: \"Announcing 1.2.0\"---Post content here.PaginationEnable in _config.yml:paginate: 5paginate_path: \"/blog/page:num/\"Tags and categoriesAdd to a post:---layout: posttitle: \"New API\"tags: [api, types]---Then loop over site.tags to generate tag pages.SEO tagsAdd the plugin and include tag:plugins:  - jekyll-seo-tagThen add {% seo %} to head.html.Sitemapsplugins:  - jekyll-sitemapMultiple doc versionscollections:  v1:    output: true    permalink: /v1/:path/  v2:    output: true    permalink: /v2/:path/Redirectsplugins:  - jekyll-redirect-fromThen in front matter:redirect_from:  - /old-url/"
+  },
+  
+  
+  
+  {
+    "title": "API: pipe",
+    "url": "/api-reference/pipe/",
+    "content": "pipeimport { pipe } from \"@adam-rocska/invertible/pipe\";const pipeline = pipe(  (n: number) =&gt; n + 1,  (n: number) =&gt; n * 2);pipeline.pipeconst pipeline = pipe((n: number) =&gt; n + 1)  .pipe((n: number) =&gt; n * 2)  .pipe((n: number) =&gt; n - 3);pipeline.callawait pipeline.call(1);Pipelinetype Pipeline&lt;Tasks extends Consecutive&gt; = Composition&lt;Tasks&gt; &amp; {  pipe: Pipe&lt;Tasks&gt;,  call: Composition&lt;Tasks&gt;};Compositiontype Composition&lt;Tasks extends NonEmptyOf&lt;Proverse&gt;&gt; =  IsEvery&lt;Tasks, Invertible&gt; extends true    ? Invertible&lt;InputOf&lt;First&lt;Tasks&gt;&gt;, OutputOf&lt;Last&lt;Tasks&gt;&gt;&gt;    : Proverse&lt;InputOf&lt;First&lt;Tasks&gt;&gt;, OutputOf&lt;Last&lt;Tasks&gt;&gt;&gt;;Consecutive / AreConsecutiveConsecutive ensures output types match next input types.const bad = pipe(  (n: number) =&gt; n + 1,  (value: string) =&gt; value.toUpperCase());"
+  },
+  
+  
+  
+  {
+    "title": "Pipelines",
+    "url": "/pipelines/",
+    "content": "Spread API and chain APIimport { pipe } from \"@adam-rocska/invertible/pipe\";const spread = pipe(  (n: number) =&gt; n + 1,  (n: number) =&gt; n * 2);const chained = pipe((n: number) =&gt; n + 1)  .pipe((n: number) =&gt; n * 2);Both return a pipeline that is callable like a function.await spread(1); // 4await chained(1); // 4Invertible pipelinesIf every task is invertible, the pipeline is invertible.import { Invertible } from \"@adam-rocska/invertible\";const inc = Invertible(  (n: number) =&gt; n + 1,  (n: number) =&gt; n - 1);const twice = Invertible(  (n: number) =&gt; n * 2,  (n: number) =&gt; n / 2);const pipeline = pipe(inc, twice);await pipeline(2); // 6await pipeline.inverse(6); // 2Nesting pipelinesPipelines are functions, so you can compose them.const pipeline = pipe(  pipe(inc, twice),  pipe(twice, inc));await pipeline(1); // 9await pipeline.inverse(9); // 1Type alignment errorsConsecutive ensures output types match next input types.const bad = pipe(  (n: number) =&gt; n + 1,  (value: string) =&gt; value.toUpperCase());// Type error: number is not assignable to stringMixed sync + asyncconst task1 = (n: number) =&gt; n + 1;const task2 = async (n: number) =&gt; n * 2;const task3 = (n: number) =&gt; n - 3;const pipeline = pipe(task1, task2, task3);await pipeline(1); // 1"
+  },
+  
+  
+  
+  {
+    "title": "Recipes",
+    "url": "/recipes/",
+    "content": "Undo/redo stackimport { Invertible } from \"@adam-rocska/invertible\";type State = { count: number };const increment = Invertible&lt;State&gt;(  (state) =&gt; ({ ...state, count: state.count + 1 }),  (state) =&gt; ({ ...state, count: state.count - 1 }));const stack: Array&lt;ReturnType&lt;typeof increment&gt;&gt; = [];const apply = async (state: State) =&gt; {  const next = await increment(state);  stack.push(increment.inverse);  return next;};const undo = async (state: State) =&gt; {  const inverse = stack.pop();  return inverse ? inverse(state) : state;};Bidirectional data codecAdapted from tests: turn a User into a base64 payload and back.import { Invertible } from \"@adam-rocska/invertible\";import { pipe } from \"@adam-rocska/invertible/pipe\";const byteBase64 = Invertible&lt;string, Uint8Array&gt;(  (s) =&gt; Uint8Array.from(atob(s), (c) =&gt; c.codePointAt(0)!),  (a) =&gt; btoa(String.fromCharCode(...a)));const stringBytes = Invertible(  (s: string) =&gt; new TextEncoder().encode(s),  (a: Uint8Array) =&gt; new TextDecoder().decode(a));const joinTuple = &lt;T extends readonly any[]&gt;(separator: string) =&gt; Invertible(  (v: T) =&gt; v.join(separator),  (s: string) =&gt; s.split(separator) as any as T);class User { constructor(public name: string, public age: number) {} }type UserTuple = readonly [name: string, age: number];const userTuple = Invertible&lt;User, UserTuple&gt;(  (u) =&gt; [u.name, u.age] as const,  ([name, age]) =&gt; new User(name, age));const userCodec = pipe(userTuple)  .pipe(joinTuple('|'))  .pipe(stringBytes)  .pipe(byteBase64.inverse);const user = new User('John Doe', 42);const payload = await userCodec(user); // \"Sm9obiBEb2V8NDI=\"Reversible CI tasksimport { Invertible } from \"@adam-rocska/invertible\";import { pipe } from \"@adam-rocska/invertible/pipe\";const migrate = Invertible(  async () =&gt; \"migrate up\",  async () =&gt; \"migrate down\");const seed = Invertible(  async () =&gt; \"seed data\",  async () =&gt; \"remove seed\");const pipeline = pipe(migrate, seed);await pipeline();await pipeline.inverse();"
+  },
+  
+  
+  
+  {
+    "title": "Release notes",
+    "url": "/release-notes/",
+    "content": "1.1.3  Added useful badges to the README  Dependency upgrades"
+  },
+  
+  
+  
+  
+  
+  
+  
+  {
+    "title": "Type utilities",
+    "url": "/type-utilities/",
+    "content": "The utility types live in `@adam-rocska/invertible/utility`.```tsimport { First, Last, NonEmptyOf } from \"@adam-rocska/invertible/utility\";```## NonEmptyOf```tstype TaskList = NonEmptyOf void>;```## First and Last```tstype Head = First; // 1type Tail = Last; // 3```## Tail and Init```tstype Rest = Tail; // [2, 3]```## Tuple```tsimport { Tuple } from \"@adam-rocska/invertible/utility\";const tuple = Tuple(1, 2, 3);// type is [1, 2, 3]```## Coalesce```tsimport { Coalesce } from \"@adam-rocska/invertible/utility\";const value = Coalesce(undefined, undefined, \"ok\"); // \"ok\"```## IsEvery```tsimport { IsEvery } from \"@adam-rocska/invertible/utility\";const allStrings = IsEvery([\"a\", \"b\"], (v): v is string => typeof v === \"string\");```"
+  },
+  
+  
+  
+  {
+    "title": "API: utility",
+    "url": "/api-reference/utility/",
+    "content": "```tsimport {  Coalesce,  First,  FirstOr,  Last,  LastOr,  Init,  Tail,  Tuple,  NonEmpty,  NonEmptyOf,  IsNonEmptyOf,  IsEvery} from \"@adam-rocska/invertible/utility\";```## Coalesce```tsconst value = Coalesce(undefined, \"ok\"); // \"ok\"```## First / FirstOr```tstype Head = First; // 1const head = First([1, 2, 3]); // 1const safe = FirstOr([], \"default\"); // \"default\"```## Last / LastOr```tstype Tail = Last; // 3const tail = Last([1, 2, 3]); // 3const safe = LastOr([], \"default\"); // \"default\"```## Tail / Init```tstype Rest = Tail; // [2, 3]type Start = Init; // [1, 2]```## Tuple```tsconst tuple = Tuple(\"a\", 1, true);```## NonEmpty / NonEmptyOf```tsconst tuple = NonEmpty(1, 2, 3);const list = NonEmptyOf(\"x\", \"y\");```## IsNonEmptyOf```tsconst list: string[] = [];if (IsNonEmptyOf(list)) {  list[0];}```## IsEvery```tsconst list = [\"a\", \"b\"] as const;const allStrings = IsEvery(list, (v): v is string => typeof v === \"string\");```"
+  }
+  
+  
+]

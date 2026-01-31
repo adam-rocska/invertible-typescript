@@ -1,0 +1,15 @@
+---
+layout: null
+---
+[
+  {% assign pages = site.pages | where_exp: "p", "p.url != nil" %}
+  {% for page in pages %}
+  {% unless page.url contains '/assets/' or page.url contains '/search.json' or page.url contains '/404' %}
+  {
+    "title": {{ page.title | default: page.name | jsonify }},
+    "url": {{ page.url | relative_url | jsonify }},
+    "content": {{ page.content | strip_html | strip_newlines | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endunless %}
+  {% endfor %}
+]

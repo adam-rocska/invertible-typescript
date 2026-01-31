@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Invertible functions for TypeScript | Invertible</title>
-<meta name="description" content="Compose forward + inverse logic into pipelines with type-safe guarantees." />
+<title>FAQ | Invertible</title>
+<meta name="description" content="Practical answers about invertibility and typing." />
 <link rel="stylesheet" href="/assets/css/style.css" />
 <link rel="icon" href="/assets/img/favicon.svg" />
 <script defer src="/assets/js/toc.js"></script>
@@ -78,64 +78,41 @@
 </nav>
 
       <main class="content" id="main">
-        <section class="hero">
-  <div class="hero-content">
-    <p class="eyebrow">Invertible</p>
-    <h1>Invertible functions for TypeScript</h1>
-    <p class="hero-description">Compose forward + inverse logic into pipelines with type-safe guarantees.</p>
-    <div class="hero-actions">
-      <a class="button primary" href="/getting-started/">Get started</a>
-      <a class="button ghost" href="/api-reference/invertible/">API reference</a>
-    </div>
-  </div>
-  <div class="hero-card">
-    <div class="card-title">Quick preview</div>
-    <pre><code class="language-ts">import { Invertible } from "@adam-rocska/invertible";
-import { pipe } from "@adam-rocska/invertible/pipe";
+        <div class="doc-layout">
+  <article class="doc-content">
+    <header class="doc-header">
+      <h1>FAQ</h1>
+      <p class="doc-description">Practical answers about invertibility and typing.</p>
+    </header>
+    <h2 id="why-is-my-pipeline-not-invertible">Why is my pipeline not invertible?</h2>
 
-const inc = Invertible(
-  (n: number) => n + 1,
-  (n: number) => n - 1
-);
+<p>A pipeline is invertible only if <strong>every</strong> task is invertible. If you include a plain function, the pipeline becomes a <code class="language-plaintext highlighter-rouge">Proverse</code> and <code class="language-plaintext highlighter-rouge">.inverse</code> disappears.</p>
 
-const twice = Invertible(
-  (n: number) => n * 2,
-  (n: number) => n / 2
-);
+<h2 id="why-do-i-get-a-consecutive-type-error">Why do I get a consecutive type error?</h2>
 
-const pipeline = pipe(inc).pipe(twice).pipe(inc);
+<p><code class="language-plaintext highlighter-rouge">Consecutive</code> enforces that each task output matches the next task input. Fix the mismatch and the error goes away.</p>
 
-await pipeline(2); // 6
-await pipeline.inverse(6); // 2</code></pre>
-  </div>
-</section>
-<section class="feature-grid">
-  <article>
-    <h2>Bidirectional by design</h2>
-    <p>Pair a forward function with its inverse. Compose them into pipelines that stay invertible end to end.</p>
+<h2 id="can-i-nest-pipelines">Can I nest pipelines?</h2>
+
+<p>Yes. Pipelines are functions, so they can be nested or passed into other pipelines.</p>
+
+<h2 id="do-sync-tasks-return-a-promise">Do sync tasks return a promise?</h2>
+
+<p>Yes. The pipeline always returns a promise because tasks are awaited.</p>
+
+<h2 id="is-isinvertible-safe">Is isInvertible safe?</h2>
+
+<p>It checks that <code class="language-plaintext highlighter-rouge">.inverse</code> exists, is a function, and points back. It does not validate mathematical correctness.</p>
+
   </article>
-  <article>
-    <h2>Type-safe composition</h2>
-    <p>Pipeline typing ensures outputs line up with next inputs. Invertible pipelines stay invertible.</p>
-  </article>
-  <article>
-    <h2>Sync and async together</h2>
-    <p>Mix sync and async tasks freely. Everything returns a promise when composed.</p>
-  </article>
-</section>
-<section class="section">
-  <h2>Doc map</h2>
-  <div class="doc-map">
-    <a href="/getting-started/">Getting started</a>
-    <a href="/concepts/">Core concepts</a>
-    <a href="/pipelines/">Pipelines</a>
-    <a href="/recipes/">Recipes</a>
-    <a href="/api-reference/invertible/">API: invertible</a>
-    <a href="/api-reference/pipe/">API: pipe</a>
-    <a href="/api-reference/utility/">API: utility</a>
-    <a href="/faq/">FAQ</a>
-  </div>
-</section>
+  
+<aside class="toc" aria-label="Table of contents">
+  <div class="toc-title">On this page</div>
+  <nav id="toc-list"></nav>
+</aside>
+
+
+</div>
 
       </main>
       <footer class="site-footer">

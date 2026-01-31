@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jekyll features | Invertible</title>
+<meta name="description" content="What this site uses and extra features you can enable later." />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<link rel="icon" href="/assets/img/favicon.svg" />
+<script defer src="/assets/js/toc.js"></script>
+<script defer src="/assets/js/copy-code.js"></script>
+<script defer src="/assets/js/search.js"></script>
+
+  </head>
+  <body data-search-index="/search.json">
+    <div class="page">
+      <nav class="site-nav" aria-label="Primary">
+  <a class="brand" href="/">Invertible</a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+  <div id="nav-menu" class="nav-menu">
+    
+      
+        <a class="nav-link" href="/">Home</a>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Start</span>
+          
+            <a class="nav-link" href="/getting-started/">Getting started</a>
+          
+            <a class="nav-link" href="/concepts/">Concepts</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Guides</span>
+          
+            <a class="nav-link" href="/pipelines/">Pipelines</a>
+          
+            <a class="nav-link" href="/recipes/">Recipes</a>
+          
+            <a class="nav-link" href="/type-utilities/">Type utilities</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">API</span>
+          
+            <a class="nav-link" href="/api-reference/invertible/">API: invertible</a>
+          
+            <a class="nav-link" href="/api-reference/pipe/">API: pipe</a>
+          
+            <a class="nav-link" href="/api-reference/utility/">API: utility</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Reference</span>
+          
+            <a class="nav-link" href="/faq/">FAQ</a>
+          
+            <a class="nav-link" href="/release-notes/">Release notes</a>
+          
+            <a class="nav-link" href="/jekyll-features/">Jekyll features</a>
+          
+        </div>
+      
+    
+  </div>
+</nav>
+
+      <main class="content" id="main">
+        <div class="doc-layout">
+  <article class="doc-content">
+    <header class="doc-header">
+      <h1>Jekyll features</h1>
+      <p class="doc-description">What this site uses and extra features you can enable later.</p>
+    </header>
+    <p>This site already uses a bunch of Jekyll features:</p>
+
+<ul>
+  <li><strong>Data files</strong> (<code class="language-plaintext highlighter-rouge">_data/navigation.yml</code>) for navigation.</li>
+  <li><strong>Layouts</strong> and <strong>includes</strong> to keep pages consistent.</li>
+  <li><strong>Sass/SCSS</strong> for styling in <code class="language-plaintext highlighter-rouge">assets/css/style.scss</code>.</li>
+  <li><strong>Pretty permalinks</strong> for clean URLs.</li>
+  <li><strong>Liquid</strong> templating for nav, TOC, and search index.</li>
+</ul>
+
+<h2 id="optional-features-you-can-add-later">Optional features you can add later</h2>
+
+<h3 id="blog-posts">Blog posts</h3>
+
+<p>Create <code class="language-plaintext highlighter-rouge">_posts</code> and add <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-title.md</code> files:</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Announcing</span><span class="nv"> </span><span class="s">1.2.0"</span>
+<span class="nn">---</span>
+
+Post content here.
+</code></pre></div></div>
+
+<h3 id="pagination">Pagination</h3>
+
+<p>Enable in <code class="language-plaintext highlighter-rouge">_config.yml</code>:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">paginate</span><span class="pi">:</span> <span class="m">5</span>
+<span class="na">paginate_path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/blog/page:num/"</span>
+</code></pre></div></div>
+
+<h3 id="tags-and-categories">Tags and categories</h3>
+
+<p>Add to a post:</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">New</span><span class="nv"> </span><span class="s">API"</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">api</span><span class="pi">,</span> <span class="nv">types</span><span class="pi">]</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>Then loop over <code class="language-plaintext highlighter-rouge">site.tags</code> to generate tag pages.</p>
+
+<h3 id="seo-tags">SEO tags</h3>
+
+<p>Add the plugin and include tag:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-seo-tag</span>
+</code></pre></div></div>
+
+<p>Then add <code class="language-plaintext highlighter-rouge">{% seo %}</code> to <code class="language-plaintext highlighter-rouge">head.html</code>.</p>
+
+<h3 id="sitemaps">Sitemaps</h3>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
+</code></pre></div></div>
+
+<h3 id="multiple-doc-versions">Multiple doc versions</h3>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">collections</span><span class="pi">:</span>
+  <span class="na">v1</span><span class="pi">:</span>
+    <span class="na">output</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">permalink</span><span class="pi">:</span> <span class="s">/v1/:path/</span>
+  <span class="na">v2</span><span class="pi">:</span>
+    <span class="na">output</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">permalink</span><span class="pi">:</span> <span class="s">/v2/:path/</span>
+</code></pre></div></div>
+
+<h3 id="redirects">Redirects</h3>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-redirect-from</span>
+</code></pre></div></div>
+
+<p>Then in front matter:</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>redirect_from:
+<span class="p">  -</span> /old-url/
+</code></pre></div></div>
+
+  </article>
+  
+<aside class="toc" aria-label="Table of contents">
+  <div class="toc-title">On this page</div>
+  <nav id="toc-list"></nav>
+</aside>
+
+
+</div>
+
+      </main>
+      <footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <strong>Invertible</strong>
+      <p>Type-safe invertible functions and pipelines for TypeScript.</p>
+    </div>
+    <div>
+      <strong>Docs</strong>
+      <a href="/getting-started/">Getting started</a>
+      <a href="/api-reference/invertible/">API reference</a>
+    </div>
+    <div>
+      <strong>Repository</strong>
+      <a href="https://github.com/adam-rocska/invertible-typescript">GitHub</a>
+      <a href="https://github.com/adam-rocska/invertible-typescript/issues">Issues</a>
+    </div>
+  </div>
+  <div class="footer-meta">Last build: 2026-01-31 15:17 UTC</div>
+</footer>
+
+    </div>
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const menu = document.querySelector('#nav-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('open', !expanded);
+        });
+      }
+    </script>
+  </body>
+</html>

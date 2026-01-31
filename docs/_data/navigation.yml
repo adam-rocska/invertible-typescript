@@ -1,0 +1,32 @@
+- title: Home
+  url: /
+- title: Start
+  children:
+    - title: Getting started
+      url: /getting-started/
+    - title: Concepts
+      url: /concepts/
+- title: Guides
+  children:
+    - title: Pipelines
+      url: /pipelines/
+    - title: Recipes
+      url: /recipes/
+    - title: Type utilities
+      url: /type-utilities/
+- title: API
+  children:
+    - title: "API: invertible"
+      url: /api-reference/invertible/
+    - title: "API: pipe"
+      url: /api-reference/pipe/
+    - title: "API: utility"
+      url: /api-reference/utility/
+- title: Reference
+  children:
+    - title: FAQ
+      url: /faq/
+    - title: Release notes
+      url: /release-notes/
+    - title: Jekyll features
+      url: /jekyll-features/

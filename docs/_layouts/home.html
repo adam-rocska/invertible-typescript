@@ -1,0 +1,61 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">{{ site.title }}</p>
+    <h1>{{ page.title | default: site.title }}</h1>
+    <p class="hero-description">{{ page.description | default: site.description }}</p>
+    <div class="hero-actions">
+      <a class="button primary" href="{{ '/getting-started/' | relative_url }}">Get started</a>
+      <a class="button ghost" href="{{ '/api-reference/invertible/' | relative_url }}">API reference</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="card-title">Quick preview</div>
+    <pre><code class="language-ts">import { Invertible } from "@adam-rocska/invertible";
+import { pipe } from "@adam-rocska/invertible/pipe";
+
+const inc = Invertible(
+  (n: number) => n + 1,
+  (n: number) => n - 1
+);
+
+const twice = Invertible(
+  (n: number) => n * 2,
+  (n: number) => n / 2
+);
+
+const pipeline = pipe(inc).pipe(twice).pipe(inc);
+
+await pipeline(2); // 6
+await pipeline.inverse(6); // 2</code></pre>
+  </div>
+</section>
+<section class="feature-grid">
+  <article>
+    <h2>Bidirectional by design</h2>
+    <p>Pair a forward function with its inverse. Compose them into pipelines that stay invertible end to end.</p>
+  </article>
+  <article>
+    <h2>Type-safe composition</h2>
+    <p>Pipeline typing ensures outputs line up with next inputs. Invertible pipelines stay invertible.</p>
+  </article>
+  <article>
+    <h2>Sync and async together</h2>
+    <p>Mix sync and async tasks freely. Everything returns a promise when composed.</p>
+  </article>
+</section>
+<section class="section">
+  <h2>Doc map</h2>
+  <div class="doc-map">
+    <a href="{{ '/getting-started/' | relative_url }}">Getting started</a>
+    <a href="{{ '/concepts/' | relative_url }}">Core concepts</a>
+    <a href="{{ '/pipelines/' | relative_url }}">Pipelines</a>
+    <a href="{{ '/recipes/' | relative_url }}">Recipes</a>
+    <a href="{{ '/api-reference/invertible/' | relative_url }}">API: invertible</a>
+    <a href="{{ '/api-reference/pipe/' | relative_url }}">API: pipe</a>
+    <a href="{{ '/api-reference/utility/' | relative_url }}">API: utility</a>
+    <a href="{{ '/faq/' | relative_url }}">FAQ</a>
+  </div>
+</section>

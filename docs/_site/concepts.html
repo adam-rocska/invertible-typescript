@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concepts | Invertible</title>
+<meta name="description" content="The core vocabulary behind invertible functions and pipelines." />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<link rel="icon" href="/assets/img/favicon.svg" />
+<script defer src="/assets/js/toc.js"></script>
+<script defer src="/assets/js/copy-code.js"></script>
+<script defer src="/assets/js/search.js"></script>
+
+  </head>
+  <body data-search-index="/search.json">
+    <div class="page">
+      <nav class="site-nav" aria-label="Primary">
+  <a class="brand" href="/">Invertible</a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+  <div id="nav-menu" class="nav-menu">
+    
+      
+        <a class="nav-link" href="/">Home</a>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Start</span>
+          
+            <a class="nav-link" href="/getting-started/">Getting started</a>
+          
+            <a class="nav-link" href="/concepts/">Concepts</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Guides</span>
+          
+            <a class="nav-link" href="/pipelines/">Pipelines</a>
+          
+            <a class="nav-link" href="/recipes/">Recipes</a>
+          
+            <a class="nav-link" href="/type-utilities/">Type utilities</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">API</span>
+          
+            <a class="nav-link" href="/api-reference/invertible/">API: invertible</a>
+          
+            <a class="nav-link" href="/api-reference/pipe/">API: pipe</a>
+          
+            <a class="nav-link" href="/api-reference/utility/">API: utility</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Reference</span>
+          
+            <a class="nav-link" href="/faq/">FAQ</a>
+          
+            <a class="nav-link" href="/release-notes/">Release notes</a>
+          
+            <a class="nav-link" href="/jekyll-features/">Jekyll features</a>
+          
+        </div>
+      
+    
+  </div>
+</nav>
+
+      <main class="content" id="main">
+        <div class="doc-layout">
+  <article class="doc-content">
+    <header class="doc-header">
+      <h1>Concepts</h1>
+      <p class="doc-description">The core vocabulary behind invertible functions and pipelines.</p>
+    </header>
+    <h2 id="proverse">Proverse</h2>
+
+<p>A <strong>proverse</strong> is any function from input to output. It can be sync or async.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Proverse</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@adam-rocska/invertible</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">toUpper</span> <span class="o">=</span> <span class="nc">Proverse</span><span class="p">((</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">value</span><span class="p">.</span><span class="nf">toUpperCase</span><span class="p">());</span>
+<span class="kd">const</span> <span class="nx">length</span> <span class="o">=</span> <span class="nc">Proverse</span><span class="p">(</span><span class="k">async </span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="inverse">Inverse</h2>
+
+<p>An <strong>inverse</strong> goes the other way: output back to input.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Inverse</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@adam-rocska/invertible</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">type</span> <span class="nx">Encoder</span> <span class="o">=</span> <span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">Uint8Array</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">decode</span> <span class="o">=</span> <span class="nx">Inverse</span><span class="o">&lt;</span><span class="nx">Encoder</span><span class="o">&gt;</span><span class="p">((</span><span class="nx">bytes</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nc">TextDecoder</span><span class="p">().</span><span class="nf">decode</span><span class="p">(</span><span class="nx">bytes</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h2 id="invertible">Invertible</h2>
+
+<p>An <strong>invertible</strong> links a proverse and its inverse, and keeps them connected.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Invertible</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@adam-rocska/invertible</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">trim</span> <span class="o">=</span> <span class="nc">Invertible</span><span class="p">(</span>
+  <span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">value</span><span class="p">.</span><span class="nf">trim</span><span class="p">(),</span>
+  <span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">value</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="pipelines">Pipelines</h2>
+
+<p>A pipeline is a sequence of tasks where each output becomes the next input. Types guarantee alignment.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">pipe</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@adam-rocska/invertible/pipe</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">pipeline</span> <span class="o">=</span> <span class="nf">pipe</span><span class="p">(</span>
+  <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`#</span><span class="p">${</span><span class="nx">n</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+  <span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">value</span><span class="p">.</span><span class="nf">toUpperCase</span><span class="p">()</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>If every task is invertible, the pipeline is invertible too.</p>
+
+  </article>
+  
+<aside class="toc" aria-label="Table of contents">
+  <div class="toc-title">On this page</div>
+  <nav id="toc-list"></nav>
+</aside>
+
+
+</div>
+
+      </main>
+      <footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <strong>Invertible</strong>
+      <p>Type-safe invertible functions and pipelines for TypeScript.</p>
+    </div>
+    <div>
+      <strong>Docs</strong>
+      <a href="/getting-started/">Getting started</a>
+      <a href="/api-reference/invertible/">API reference</a>
+    </div>
+    <div>
+      <strong>Repository</strong>
+      <a href="https://github.com/adam-rocska/invertible-typescript">GitHub</a>
+      <a href="https://github.com/adam-rocska/invertible-typescript/issues">Issues</a>
+    </div>
+  </div>
+  <div class="footer-meta">Last build: 2026-01-31 15:14 UTC</div>
+</footer>
+
+    </div>
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const menu = document.querySelector('#nav-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('open', !expanded);
+        });
+      }
+    </script>
+  </body>
+</html>

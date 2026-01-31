@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pipelines | Invertible</title>
+<meta name="description" content="Compose tasks, keep types aligned, and preserve invertibility." />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<link rel="icon" href="/assets/img/favicon.svg" />
+<script defer src="/assets/js/toc.js"></script>
+<script defer src="/assets/js/copy-code.js"></script>
+<script defer src="/assets/js/search.js"></script>
+
+  </head>
+  <body data-search-index="/search.json">
+    <div class="page">
+      <nav class="site-nav" aria-label="Primary">
+  <a class="brand" href="/">Invertible</a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+  <div id="nav-menu" class="nav-menu">
+    
+      
+        <a class="nav-link" href="/">Home</a>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Start</span>
+          
+            <a class="nav-link" href="/getting-started/">Getting started</a>
+          
+            <a class="nav-link" href="/concepts/">Concepts</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Guides</span>
+          
+            <a class="nav-link" href="/pipelines/">Pipelines</a>
+          
+            <a class="nav-link" href="/recipes/">Recipes</a>
+          
+            <a class="nav-link" href="/type-utilities/">Type utilities</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">API</span>
+          
+            <a class="nav-link" href="/api-reference/invertible/">API: invertible</a>
+          
+            <a class="nav-link" href="/api-reference/pipe/">API: pipe</a>
+          
+            <a class="nav-link" href="/api-reference/utility/">API: utility</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Reference</span>
+          
+            <a class="nav-link" href="/faq/">FAQ</a>
+          
+            <a class="nav-link" href="/release-notes/">Release notes</a>
+          
+            <a class="nav-link" href="/jekyll-features/">Jekyll features</a>
+          
+        </div>
+      
+    
+  </div>
+</nav>
+
+      <main class="content" id="main">
+        <div class="doc-layout">
+  <article class="doc-content">
+    <header class="doc-header">
+      <h1>Pipelines</h1>
+      <p class="doc-description">Compose tasks, keep types aligned, and preserve invertibility.</p>
+    </header>
+    <h2 id="spread-api-and-chain-api">Spread API and chain API</h2>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">pipe</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@adam-rocska/invertible/pipe</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">spread</span> <span class="o">=</span> <span class="nf">pipe</span><span class="p">(</span>
+  <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">chained</span> <span class="o">=</span> <span class="nf">pipe</span><span class="p">((</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">pipe</span><span class="p">((</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Both return a pipeline that is callable like a function.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nf">spread</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// 4</span>
+<span class="k">await</span> <span class="nf">chained</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// 4</span>
+</code></pre></div></div>
+
+<h2 id="invertible-pipelines">Invertible pipelines</h2>
+
+<p>If every task is invertible, the pipeline is invertible.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Invertible</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@adam-rocska/invertible</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">inc</span> <span class="o">=</span> <span class="nc">Invertible</span><span class="p">(</span>
+  <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">twice</span> <span class="o">=</span> <span class="nc">Invertible</span><span class="p">(</span>
+  <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">pipeline</span> <span class="o">=</span> <span class="nf">pipe</span><span class="p">(</span><span class="nx">inc</span><span class="p">,</span> <span class="nx">twice</span><span class="p">);</span>
+
+<span class="k">await</span> <span class="nf">pipeline</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 6</span>
+<span class="k">await</span> <span class="nx">pipeline</span><span class="p">.</span><span class="nf">inverse</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span> <span class="c1">// 2</span>
+</code></pre></div></div>
+
+<h2 id="nesting-pipelines">Nesting pipelines</h2>
+
+<p>Pipelines are functions, so you can compose them.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pipeline</span> <span class="o">=</span> <span class="nf">pipe</span><span class="p">(</span>
+  <span class="nf">pipe</span><span class="p">(</span><span class="nx">inc</span><span class="p">,</span> <span class="nx">twice</span><span class="p">),</span>
+  <span class="nf">pipe</span><span class="p">(</span><span class="nx">twice</span><span class="p">,</span> <span class="nx">inc</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">await</span> <span class="nf">pipeline</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// 9</span>
+<span class="k">await</span> <span class="nx">pipeline</span><span class="p">.</span><span class="nf">inverse</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span> <span class="c1">// 1</span>
+</code></pre></div></div>
+
+<h2 id="type-alignment-errors">Type alignment errors</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Consecutive</code> ensures output types match next input types.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bad</span> <span class="o">=</span> <span class="nf">pipe</span><span class="p">(</span>
+  <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">value</span><span class="p">.</span><span class="nf">toUpperCase</span><span class="p">()</span>
+<span class="p">);</span>
+<span class="c1">// Type error: number is not assignable to string</span>
+</code></pre></div></div>
+
+<h2 id="mixed-sync--async">Mixed sync + async</h2>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">task1</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">task2</span> <span class="o">=</span> <span class="k">async </span><span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">task3</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">-</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">pipeline</span> <span class="o">=</span> <span class="nf">pipe</span><span class="p">(</span><span class="nx">task1</span><span class="p">,</span> <span class="nx">task2</span><span class="p">,</span> <span class="nx">task3</span><span class="p">);</span>
+<span class="k">await</span> <span class="nf">pipeline</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// 1</span>
+</code></pre></div></div>
+
+  </article>
+  
+<aside class="toc" aria-label="Table of contents">
+  <div class="toc-title">On this page</div>
+  <nav id="toc-list"></nav>
+</aside>
+
+
+</div>
+
+      </main>
+      <footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <strong>Invertible</strong>
+      <p>Type-safe invertible functions and pipelines for TypeScript.</p>
+    </div>
+    <div>
+      <strong>Docs</strong>
+      <a href="/getting-started/">Getting started</a>
+      <a href="/api-reference/invertible/">API reference</a>
+    </div>
+    <div>
+      <strong>Repository</strong>
+      <a href="https://github.com/adam-rocska/invertible-typescript">GitHub</a>
+      <a href="https://github.com/adam-rocska/invertible-typescript/issues">Issues</a>
+    </div>
+  </div>
+  <div class="footer-meta">Last build: 2026-01-31 15:14 UTC</div>
+</footer>
+
+    </div>
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const menu = document.querySelector('#nav-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('open', !expanded);
+        });
+      }
+    </script>
+  </body>
+</html>

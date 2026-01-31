@@ -1,0 +1,47 @@
+title: Invertible
+description: Type-safe invertible functions and pipelines for TypeScript.
+
+url: ""
+baseurl: ""
+permalink: pretty
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+theme: null
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: doc
+      toc: true
+
+exclude:
+  - _site
+  - docs.json
+
+navigation:
+  groups:
+    - group: Start
+      pages:
+        - index
+        - getting-started
+        - concepts
+    - group: Guides
+      pages:
+        - pipelines
+        - recipes
+        - type-utilities
+    - group: API
+      pages:
+        - api-reference/invertible
+        - api-reference/pipe
+        - api-reference/utility
+    - group: Reference
+      pages:
+        - faq
+        - release-notes
+        - jekyll-features

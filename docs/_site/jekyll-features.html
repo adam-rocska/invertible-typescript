@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mintlify features | Invertible</title>
+<meta name="description" content="Extra features you can adopt without writing code." />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<link rel="icon" href="/assets/img/favicon.svg" />
+<script defer src="/assets/js/toc.js"></script>
+<script defer src="/assets/js/copy-code.js"></script>
+<script defer src="/assets/js/search.js"></script>
+
+  </head>
+  <body data-search-index="/search.json">
+    <div class="page">
+      <nav class="site-nav" aria-label="Primary">
+  <a class="brand" href="/">Invertible</a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+  <div id="nav-menu" class="nav-menu">
+    
+      
+        <a class="nav-link" href="/">Home</a>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Start</span>
+          
+            <a class="nav-link" href="/getting-started/">Getting started</a>
+          
+            <a class="nav-link" href="/concepts/">Concepts</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Guides</span>
+          
+            <a class="nav-link" href="/pipelines/">Pipelines</a>
+          
+            <a class="nav-link" href="/recipes/">Recipes</a>
+          
+            <a class="nav-link" href="/type-utilities/">Type utilities</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">API</span>
+          
+            <a class="nav-link" href="/api-reference/invertible/">API: invertible</a>
+          
+            <a class="nav-link" href="/api-reference/pipe/">API: pipe</a>
+          
+            <a class="nav-link" href="/api-reference/utility/">API: utility</a>
+          
+        </div>
+      
+    
+      
+        <div class="nav-group">
+          <span class="nav-group-title">Reference</span>
+          
+            <a class="nav-link" href="/faq/">FAQ</a>
+          
+            <a class="nav-link" href="/release-notes/">Release notes</a>
+          
+            <a class="nav-link" href="/jekyll-features/">Jekyll features</a>
+          
+        </div>
+      
+    
+  </div>
+</nav>
+
+      <main class="content" id="main">
+        <div class="doc-layout">
+  <article class="doc-content">
+    <header class="doc-header">
+      <h1>Mintlify features</h1>
+      <p class="doc-description">Extra features you can adopt without writing code.</p>
+    </header>
+    <p>This docs setup stays Markdown-only. If you want more later, Mintlify supports:</p>
+
+<h2 id="openapi-pages">OpenAPI pages</h2>
+
+<p>Add an API spec and reference it in <code class="language-plaintext highlighter-rouge">docs.json</code>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"openapi"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openapi.json"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="tabs-and-callouts-markdown-only">Tabs and callouts (Markdown-only)</h2>
+
+<p>Use components directly in Markdown:</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:::note
+You can call out important details.
+:::
+
+:::tabs
+::tab{title="TypeScript"}
+<span class="p">```</span><span class="nl">ts
+</span><span class="kd">const</span> <span class="nx">hello</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">```</span>
+::
+::tab{title="JavaScript"}
+<span class="p">```</span><span class="nl">js
+</span><span class="kd">const</span> <span class="nx">hello</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">```</span>
+::
+:::
+</code></pre></div></div>
+
+<h2 id="code-group-and-copy-buttons">Code group and copy buttons</h2>
+
+<p>Mintlify adds copy buttons automatically to code blocks.</p>
+
+<h2 id="api-playgrounds">API playgrounds</h2>
+
+<p>If you add OpenAPI specs, Mintlify renders live API explorers.</p>
+
+<h2 id="custom-domains-and-analytics">Custom domains and analytics</h2>
+
+<p>Set <code class="language-plaintext highlighter-rouge">favicon</code>, <code class="language-plaintext highlighter-rouge">logo</code>, <code class="language-plaintext highlighter-rouge">analytics</code>, and <code class="language-plaintext highlighter-rouge">redirects</code> in <code class="language-plaintext highlighter-rouge">docs.json</code>.</p>
+
+<p>If you want any of these turned on, I can wire them up while keeping your content Markdown-only.</p>
+
+  </article>
+  
+<aside class="toc" aria-label="Table of contents">
+  <div class="toc-title">On this page</div>
+  <nav id="toc-list"></nav>
+</aside>
+
+
+</div>
+
+      </main>
+      <footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <strong>Invertible</strong>
+      <p>Type-safe invertible functions and pipelines for TypeScript.</p>
+    </div>
+    <div>
+      <strong>Docs</strong>
+      <a href="/getting-started/">Getting started</a>
+      <a href="/api-reference/invertible/">API reference</a>
+    </div>
+    <div>
+      <strong>Repository</strong>
+      <a href="https://github.com/adam-rocska/invertible-typescript">GitHub</a>
+      <a href="https://github.com/adam-rocska/invertible-typescript/issues">Issues</a>
+    </div>
+  </div>
+  <div class="footer-meta">Last build: 2026-01-31 15:14 UTC</div>
+</footer>
+
+    </div>
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const menu = document.querySelector('#nav-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('open', !expanded);
+        });
+      }
+    </script>
+  </body>
+</html>
